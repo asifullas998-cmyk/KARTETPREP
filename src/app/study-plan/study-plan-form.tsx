@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { jsPDF } from "jspdf";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -97,13 +98,19 @@ export function StudyPlanForm() {
 
   const handleDownloadPdf = async () => {
     if (!studyPlan) return;
-    const { jsPDF } = await import("jspdf");
     const doc = new jsPDF();
     
+    // Check if the content contains Urdu characters. A simple heuristic is to check for characters in the Arabic script range.
+    const isUrdu = /[\u0600-\u06FF]/.test(studyPlan);
+
     doc.addFileToVFS("NotoNastaliqUrdu-Regular.ttf", NotoNastaliqUrdu);
     doc.addFont("NotoNastaliqUrdu-Regular.ttf", "NotoNastaliqUrdu", "normal");
     
-    doc.setFont("NotoNastaliqUrdu");
+    if (isUrdu) {
+      doc.setFont("NotoNastaliqUrdu");
+    } else {
+      doc.setFont("Helvetica");
+    }
     
     const lines = doc.splitTextToSize(studyPlan, 180);
     doc.text(lines, 10, 10);

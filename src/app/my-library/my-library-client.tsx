@@ -35,14 +35,18 @@ export function MyLibraryClient({ initialStudyPlans }: MyLibraryClientProps) {
     const { jsPDF } = await import("jspdf");
     const doc = new jsPDF();
     
+    // Check if the content contains Urdu characters. A simple heuristic is to check for characters in the Arabic script range.
+    const isUrdu = /[\u0600-\u06FF]/.test(content);
+
+    // It's better to add the font regardless, and then set it if needed.
     doc.addFileToVFS("NotoNastaliqUrdu-Regular.ttf", NotoNastaliqUrdu);
     doc.addFont("NotoNastaliqUrdu-Regular.ttf", "NotoNastaliqUrdu", "normal");
     
-    // Check if the content contains Urdu characters. A simple heuristic is to check for characters in the Arabic script range.
-    const isUrdu = /[\u0600-\u06FF]/.test(content);
     if (isUrdu) {
       doc.setFont("NotoNastaliqUrdu");
     } else {
+      // For other languages including Kannada, Helvetica (default) might work for some characters but a specific Kannada font would be better.
+      // For now, we'll rely on the default for non-Urdu scripts.
       doc.setFont("Helvetica");
     }
     
@@ -52,19 +56,32 @@ export function MyLibraryClient({ initialStudyPlans }: MyLibraryClientProps) {
   };
 
   const handleTranslate = async (planId: string, language: string) => {
-    const originalPlan = studyPlans.find(p => p.id === planId);
+    const originalPlan = initialStudyPlans.find(p => p.id === planId);
     if (!originalPlan) return;
 
     setTranslatingId(planId);
+
+    // If the user selects the original language, just revert to original content
+    // This assumes the original content is always English, which might not be a safe assumption.
+    // A better approach would be to store the original content separately.
+    // For now, let's assume 'en' reverts to the initial content.
+     if (language === 'en') {
+        setStudyPlans(plans => plans.map(p => p.id === planId ? { ...p, content: originalPlan.content } : p));
+        setTranslatingId(null);
+        return;
+    }
+
+
     const result = await translateStudyPlan({
       studyPlan: originalPlan.content,
       targetLanguage: language,
     });
-    setTranslatingId(null);
+    
 
     if (result.success) {
       setStudyPlans(plans => plans.map(p => p.id === planId ? { ...p, content: result.success!.translatedPlan } : p));
     }
+    setTranslatingId(null);
   };
 
 
@@ -121,3 +138,4 @@ export function MyLibraryClient({ initialStudyPlans }: MyLibraryClientProps) {
     </div>
   );
 }
+
