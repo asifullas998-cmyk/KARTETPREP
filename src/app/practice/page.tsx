@@ -8,7 +8,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { CheckCircle2, XCircle } from "lucide-react";
+import { CheckCircle2, XCircle, RefreshCcw } from "lucide-react";
 
 type Question = {
   id: number;
@@ -251,8 +251,10 @@ export default function PracticePage() {
     const fetchNewQuestion = () => {
         setFeedback(null);
         setSelectedOption(null);
-        const nextQuestion = questions[Math.floor(Math.random() * questions.length)];
-        setCurrentQuestion(nextQuestion);
+        if (questions.length > 0) {
+            const nextQuestion = questions[Math.floor(Math.random() * questions.length)];
+            setCurrentQuestion(nextQuestion);
+        }
     };
 
     const handleCheckAnswer = () => {
@@ -328,7 +330,13 @@ export default function PracticePage() {
 
       <Card>
         <CardHeader>
-          {currentQuestion && <CardTitle className="font-headline text-xl">Question</CardTitle>}
+          {currentQuestion && <CardTitle className="font-headline text-xl flex justify-between items-center">
+            <span>Question</span>
+            <Button variant="outline" size="sm" onClick={fetchNewQuestion}>
+                <RefreshCcw className="mr-2 h-4 w-4" />
+                Update New Question
+            </Button>
+            </CardTitle>}
           {currentQuestion && <CardDescription>{topics[language]?.[topic]}</CardDescription>}
         </CardHeader>
         {currentQuestion ? (
@@ -375,3 +383,5 @@ export default function PracticePage() {
     </div>
   );
 }
+
+    
