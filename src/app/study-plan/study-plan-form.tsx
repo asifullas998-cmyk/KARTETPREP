@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -101,11 +102,11 @@ export function StudyPlanForm() {
     
     const isUrdu = /[\u0600-\u06FF]/.test(studyPlan);
 
-    doc.addFileToVFS("Lateef-Regular.ttf", NotoNastaliqUrdu);
-    doc.addFont("Lateef-Regular.ttf", "Lateef", "normal");
+    doc.addFileToVFS("NotoNastaliqUrdu-Regular.ttf", NotoNastaliqUrdu);
+    doc.addFont("NotoNastaliqUrdu-Regular.ttf", "NotoNastaliqUrdu", "normal");
     
     if (isUrdu) {
-      doc.setFont("Lateef");
+      doc.setFont("NotoNastaliqUrdu");
     } else {
       doc.setFont("Helvetica");
     }
