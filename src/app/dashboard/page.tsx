@@ -1,6 +1,8 @@
+"use client";
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Bell, CheckCircle, Clock } from "lucide-react";
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from "recharts";
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 
 const progressData = [
   { name: "CDP", correct: 25, total: 30 },
@@ -28,8 +30,9 @@ export default function DashboardPage() {
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={progressData}>
-                <XAxis dataKey="name" stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
-                <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `${value}%`} />
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" stroke="hsl(var(--foreground))" fontSize={12} tickLine={false} axisLine={false} />
+                <YAxis stroke="hsl(var(--foreground))" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `${value}%`} />
                 <Tooltip
                   contentStyle={{
                     backgroundColor: "hsl(var(--card))",
@@ -56,8 +59,8 @@ export default function DashboardPage() {
             <ul className="space-y-4">
               {notifications.map((item, index) => (
                 <li key={index} className="flex items-start gap-4">
-                  <div className={`p-2 bg-muted rounded-full ${item.color}`}>
-                     <item.icon className="w-5 h-5 text-white" style={{color: item.color}} />
+                   <div className="p-2 bg-muted rounded-full">
+                     <item.icon className={`w-5 h-5 ${item.color}`} />
                   </div>
                   <div>
                     <p className="font-semibold">{item.title}</p>
