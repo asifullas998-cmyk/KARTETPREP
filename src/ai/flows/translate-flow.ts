@@ -16,7 +16,7 @@ const prompt = ai.definePrompt({
   name: 'translatePrompt',
   input: {schema: TranslateInputSchema},
   output: {schema: TranslateOutputSchema},
-  prompt: `Translate the following study plan to the target language. Preserve the formatting.
+  prompt: `Translate the following study plan to the target language. Preserve the formatting. The entire response must be in the target language.
 
 Study Plan:
 {{{studyPlan}}}
@@ -36,4 +36,3 @@ const translateFlow = ai.defineFlow(
     return output!;
   }
 );
-

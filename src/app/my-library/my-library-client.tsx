@@ -38,7 +38,13 @@ export function MyLibraryClient({ initialStudyPlans }: MyLibraryClientProps) {
     doc.addFileToVFS("NotoNastaliqUrdu-Regular.ttf", NotoNastaliqUrdu);
     doc.addFont("NotoNastaliqUrdu-Regular.ttf", "NotoNastaliqUrdu", "normal");
     
-    doc.setFont("NotoNastaliqUrdu");
+    // Check if the content contains Urdu characters. A simple heuristic is to check for characters in the Arabic script range.
+    const isUrdu = /[\u0600-\u06FF]/.test(content);
+    if (isUrdu) {
+      doc.setFont("NotoNastaliqUrdu");
+    } else {
+      doc.setFont("Helvetica");
+    }
     
     const lines = doc.splitTextToSize(content, 180);
     doc.text(lines, 10, 10);

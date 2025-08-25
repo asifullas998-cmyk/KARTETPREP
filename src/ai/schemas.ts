@@ -50,4 +50,3 @@ export const TranslateOutputSchema = z.object({
   translatedPlan: z.string().describe('The translated study plan.'),
 });
 export type TranslateOutput = z.infer<typeof TranslateOutputSchema>;
-
