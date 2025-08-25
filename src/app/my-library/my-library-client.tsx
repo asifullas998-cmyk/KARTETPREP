@@ -21,6 +21,7 @@ import {
 import type { ListStudyPlansOutput } from "@/ai/schemas";
 import { Download, Loader2, Globe } from "lucide-react";
 import { translateStudyPlan } from "./actions";
+import { NotoNastaliqUrdu } from "@/lib/fonts";
 
 interface MyLibraryClientProps {
   initialStudyPlans: ListStudyPlansOutput;
@@ -33,10 +34,14 @@ export function MyLibraryClient({ initialStudyPlans }: MyLibraryClientProps) {
   const handleDownloadPdf = async (content: string) => {
     const { jsPDF } = await import("jspdf");
     const doc = new jsPDF();
-    // jsPDF doesn't handle Unicode characters well by default.
-    // This is a basic implementation. For full language support,
-    // a library like 'html2pdf' or custom fonts would be needed.
-    doc.text(content, 10, 10);
+    
+    doc.addFileToVFS("NotoNastaliqUrdu-Regular.ttf", NotoNastaliqUrdu);
+    doc.addFont("NotoNastaliqUrdu-Regular.ttf", "NotoNastaliqUrdu", "normal");
+    
+    doc.setFont("NotoNastaliqUrdu");
+    
+    const lines = doc.splitTextToSize(content, 180);
+    doc.text(lines, 10, 10);
     doc.save("study-plan.pdf");
   };
 

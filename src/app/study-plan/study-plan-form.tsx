@@ -28,6 +28,7 @@ import { useToast } from "@/hooks/use-toast";
 import { generateStudyPlan, saveStudyPlan } from "./actions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Download, Loader2, Save } from "lucide-react";
+import { NotoNastaliqUrdu } from "@/lib/fonts";
 
 const formSchema = z.object({
   userHistory: z.string().min(10, "Please provide some details about your study history."),
@@ -98,7 +99,14 @@ export function StudyPlanForm() {
     if (!studyPlan) return;
     const { jsPDF } = await import("jspdf");
     const doc = new jsPDF();
-    doc.text(studyPlan, 10, 10);
+    
+    doc.addFileToVFS("NotoNastaliqUrdu-Regular.ttf", NotoNastaliqUrdu);
+    doc.addFont("NotoNastaliqUrdu-Regular.ttf", "NotoNastaliqUrdu", "normal");
+    
+    doc.setFont("NotoNastaliqUrdu");
+    
+    const lines = doc.splitTextToSize(studyPlan, 180);
+    doc.text(lines, 10, 10);
     doc.save("study-plan.pdf");
   };
 
