@@ -53,15 +53,15 @@ export function MainSidebar() {
       <SidebarMenu>
         {menuItems.map((item) => (
           <SidebarMenuItem key={item.href}>
-            <Link href={item.href} passHref legacyBehavior>
-                <SidebarMenuButton
-                    as="a"
-                    isActive={pathname.startsWith(item.href)}
-                    tooltip={item.label}
-                >
-                    <item.icon />
-                    <span>{item.label}</span>
-                </SidebarMenuButton>
+            <Link href={item.href} passHref>
+              <SidebarMenuButton
+                as="a"
+                isActive={pathname === item.href}
+                tooltip={item.label}
+              >
+                <item.icon />
+                <span>{item.label}</span>
+              </SidebarMenuButton>
             </Link>
           </SidebarMenuItem>
         ))}

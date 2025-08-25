@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -30,6 +31,10 @@ export function Header() {
   const pathname = usePathname();
 
   const getPageTitle = (path: string) => {
+    // For dynamic routes like /mock-tests/[id]
+    if (path.startsWith('/mock-tests/')) {
+        return pageTitles['/mock-tests/paper-1'];
+    }
     return pageTitles[path] || "KARTET Prep";
   };
 
