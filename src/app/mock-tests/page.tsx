@@ -1,5 +1,10 @@
+
+"use client";
+
+import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { FileText, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -21,6 +26,12 @@ const mockTests = [
 ];
 
 export default function MockTestsPage() {
+    const [languages, setLanguages] = useState<Record<string, string>>({});
+
+    const handleLanguageChange = (testId: string, language: string) => {
+        setLanguages(prev => ({...prev, [testId]: language}));
+    }
+
   return (
     <div className="space-y-8">
       <div className="text-center">
@@ -48,9 +59,19 @@ export default function MockTestsPage() {
                   <span>{test.duration} Minutes</span>
               </div>
             </CardContent>
-            <CardFooter>
+            <CardFooter className="flex flex-col gap-4">
+                <Select onValueChange={(lang) => handleLanguageChange(test.id, lang)} defaultValue="en">
+                    <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Select language" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="en">English</SelectItem>
+                        <SelectItem value="kn">ಕನ್ನಡ (Kannada)</SelectItem>
+                        <SelectItem value="ur">اردو (Urdu)</SelectItem>
+                    </SelectContent>
+                </Select>
               <Button asChild className="w-full">
-                <Link href={`/mock-tests/${test.id}`}>
+                <Link href={`/mock-tests/${test.id}?lang=${languages[test.id] || 'en'}`}>
                   Start Test <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
