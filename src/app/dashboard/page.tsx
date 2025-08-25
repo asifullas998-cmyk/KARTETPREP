@@ -2,15 +2,6 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Bell, CheckCircle, Clock } from "lucide-react";
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
-
-const progressData = [
-  { name: "CDP", correct: 25, total: 30 },
-  { name: "Lang I", correct: 22, total: 30 },
-  { name: "Lang II", correct: 18, total: 30 },
-  { name: "Maths", correct: 28, total: 30 },
-  { name: "EVS", correct: 20, total: 30 },
-];
 
 const notifications = [
     { icon: CheckCircle, title: "KARTET 2024 results announced.", time: "2 days ago", color: "text-green-500" },
@@ -20,35 +11,7 @@ const notifications = [
 
 export default function DashboardPage() {
   return (
-    <div className="grid gap-8 grid-cols-1 lg:grid-cols-3">
-      <div className="lg:col-span-2 space-y-8">
-        <Card>
-          <CardHeader>
-            <CardTitle className="font-headline">Your Progress</CardTitle>
-            <CardDescription>Performance in recent practice sessions.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={progressData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" stroke="hsl(var(--foreground))" fontSize={12} tickLine={false} axisLine={false} />
-                <YAxis stroke="hsl(var(--foreground))" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `${value}%`} />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: "hsl(var(--card))",
-                    borderColor: "hsl(var(--border))",
-                    color: "hsl(var(--card-foreground))",
-                  }}
-                />
-                <Bar dataKey="correct" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} name="Correct Answers"
-                  label={{ position: "top", fill: "hsl(var(--foreground))", fontSize: 12, formatter: (value: number, props: any) => `${Math.round((value / props.payload.total) * 100)}%` }}
-                />
-              </BarChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
-      </div>
-
+    <div className="grid gap-8 grid-cols-1">
       <div className="space-y-8">
         <Card>
           <CardHeader>
