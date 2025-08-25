@@ -2,7 +2,6 @@
 "use client";
 
 import { useState } from "react";
-import { jsPDF } from "jspdf";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -31,7 +30,8 @@ export function MyLibraryClient({ initialStudyPlans }: MyLibraryClientProps) {
   const [studyPlans, setStudyPlans] = useState(initialStudyPlans);
   const [translatingId, setTranslatingId] = useState<string | null>(null);
 
-  const handleDownloadPdf = (content: string) => {
+  const handleDownloadPdf = async (content: string) => {
+    const { jsPDF } = await import("jspdf");
     const doc = new jsPDF();
     // jsPDF doesn't handle Unicode characters well by default.
     // This is a basic implementation. For full language support,
@@ -52,7 +52,7 @@ export function MyLibraryClient({ initialStudyPlans }: MyLibraryClientProps) {
     setTranslatingId(null);
 
     if (result.success) {
-      setStudyPlans(plans => plans.map(p => p.id === planId ? { ...p, content: result.success.translatedPlan } : p));
+      setStudyPlans(plans => plans.map(p => p.id === planId ? { ...p, content: result.success!.translatedPlan } : p));
     }
   };
 

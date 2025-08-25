@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { jsPDF } from "jspdf";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -95,8 +94,9 @@ export function StudyPlanForm() {
     }
   };
 
-  const handleDownloadPdf = () => {
+  const handleDownloadPdf = async () => {
     if (!studyPlan) return;
+    const { jsPDF } = await import("jspdf");
     const doc = new jsPDF();
     doc.text(studyPlan, 10, 10);
     doc.save("study-plan.pdf");
