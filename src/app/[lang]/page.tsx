@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpen, FileText, Pencil } from "lucide-react";
 import Link from "next/link";
-import { useTranslation } from "../i18n";
+import { useTranslation } from "@/app/i18n/server";
 
 export default async function Home({ params: { lang } }: { params: { lang: string } }) {
   const { t } = await useTranslation(lang, 'home');
