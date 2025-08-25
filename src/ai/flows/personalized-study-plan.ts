@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -37,7 +38,7 @@ const prompt = ai.definePrompt({
   name: 'personalizedStudyPlanPrompt',
   input: {schema: PersonalizedStudyPlanInputSchema},
   output: {schema: PersonalizedStudyPlanOutputSchema},
-  prompt: `You are an expert KARTET exam tutor. You will generate a personalized study plan for the student based on their user history and the syllabus. The study plan should contain a list of topics to study and practice questions to answer.
+  prompt: `You are an expert KARTET exam tutor. You will generate a personalized study plan for the student based on their user history and the syllabus. The study plan should contain a list of topics to study and practice questions to answer. The entire response must be in the student's preferred language.
 
 User History: {{{userHistory}}}
 Syllabus: {{{syllabus}}}

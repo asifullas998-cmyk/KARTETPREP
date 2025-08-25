@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -20,6 +21,7 @@ import {
   FileText,
   Bot,
   LogOut,
+  Library,
 } from "lucide-react";
 
 const menuItems = [
@@ -28,6 +30,7 @@ const menuItems = [
   { href: "/practice", label: "Practice", icon: Pencil },
   { href: "/mock-tests", label: "Mock Tests", icon: FileText },
   { href: "/study-plan", label: "Study Plan", icon: Bot },
+  { href: "/my-library", label: "My Library", icon: Library },
 ];
 
 export function MainSidebar() {

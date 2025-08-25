@@ -1,9 +1,11 @@
+
 "use client";
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { jsPDF } from "jspdf";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -24,9 +26,9 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { generateStudyPlan } from "./actions";
+import { generateStudyPlan, saveStudyPlan } from "./actions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2 } from "lucide-react";
+import { Download, Loader2, Save } from "lucide-react";
 
 const formSchema = z.object({
   userHistory: z.string().min(10, "Please provide some details about your study history."),
@@ -82,6 +84,23 @@ export function StudyPlanForm() {
       });
     }
   }
+
+  const handleSaveToLibrary = async () => {
+    if (!studyPlan) return;
+    const result = await saveStudyPlan({ content: studyPlan });
+    if (result.success) {
+      toast({ title: "Saved!", description: "Study plan saved to your library." });
+    } else {
+      toast({ variant: "destructive", title: "Error", description: result.failure });
+    }
+  };
+
+  const handleDownloadPdf = () => {
+    if (!studyPlan) return;
+    const doc = new jsPDF();
+    doc.text(studyPlan, 10, 10);
+    doc.save("study-plan.pdf");
+  };
 
   return (
     <div>
@@ -169,6 +188,10 @@ export function StudyPlanForm() {
             <pre className="whitespace-pre-wrap font-body text-sm bg-secondary p-4 rounded-md">
                 {studyPlan}
             </pre>
+            <div className="mt-4 flex gap-2">
+                <Button onClick={handleSaveToLibrary}><Save className="mr-2 h-4 w-4" /> Save to Library</Button>
+                <Button onClick={handleDownloadPdf} variant="outline"><Download className="mr-2 h-4 w-4" /> Download PDF</Button>
+            </div>
           </CardContent>
         </Card>
       )}
