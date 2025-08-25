@@ -16,7 +16,7 @@ const prompt = ai.definePrompt({
   name: 'generateQuestionPaperPrompt',
   input: {schema: GenerateQuestionPaperInputSchema},
   output: {schema: GenerateQuestionPaperOutputSchema},
-  prompt: `You are an expert KARTET exam tutor. Generate a question paper with 20 important and frequently repeated questions for the given subject. Provide 4 multiple choice options and the correct answer for each question. The entire response must be in the specified language.
+  prompt: `You are an expert KARTET exam tutor. Generate a question paper with at least 100 important and frequently repeated questions for the given subject. Provide 4 multiple choice options and the correct answer for each question. The entire response must be in the specified language.
 
 Subject: {{{subject}}}
 Language: {{{language}}}
