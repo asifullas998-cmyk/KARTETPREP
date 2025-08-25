@@ -5,30 +5,10 @@
  * @fileOverview An AI-powered study plan generator.
  *
  * - personalizedStudyPlan - A function that generates a personalized study plan.
- * - PersonalizedStudyPlanInput - The input type for the personalizedStudyPlan function.
- * - PersonalizedStudyPlanOutput - The return type for the personalizedStudyPlan function.
  */
 
 import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
-
-const PersonalizedStudyPlanInputSchema = z.object({
-  userHistory: z
-    .string()
-    .describe(
-      'The user history, containing the questions that the user has answered, and whether the answers were correct or not. Must be in JSON format.'
-    ),
-  syllabus: z.string().describe('The syllabus for the KARTET exam.'),
-  preferredLanguage: z
-    .string()
-    .describe('The preferred language of the user (en, kn, ur).'),
-});
-export type PersonalizedStudyPlanInput = z.infer<typeof PersonalizedStudyPlanInputSchema>;
-
-const PersonalizedStudyPlanOutputSchema = z.object({
-  studyPlan: z.string().describe('The personalized study plan.'),
-});
-export type PersonalizedStudyPlanOutput = z.infer<typeof PersonalizedStudyPlanOutputSchema>;
+import { PersonalizedStudyPlanInputSchema, PersonalizedStudyPlanOutputSchema, type PersonalizedStudyPlanInput, type PersonalizedStudyPlanOutput } from '../schemas';
 
 export async function personalizedStudyPlan(input: PersonalizedStudyPlanInput): Promise<PersonalizedStudyPlanOutput> {
   return personalizedStudyPlanFlow(input);
@@ -58,3 +38,4 @@ const personalizedStudyPlanFlow = ai.defineFlow(
     return output!;
   }
 );
+

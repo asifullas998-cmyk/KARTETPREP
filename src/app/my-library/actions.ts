@@ -1,16 +1,11 @@
 
 "use server";
 
-import { translate, type TranslateInput } from "@/ai/flows/translate-flow";
-import { z } from "zod";
-
-const ActionInputSchema = z.object({
-  studyPlan: z.string(),
-  targetLanguage: z.string(),
-});
+import { translate } from "@/ai/flows/translate-flow";
+import { type TranslateInput, TranslateInputSchema } from "@/ai/schemas";
 
 export async function translateStudyPlan(input: TranslateInput) {
-  const validatedInput = ActionInputSchema.safeParse(input);
+  const validatedInput = TranslateInputSchema.safeParse(input);
 
   if (!validatedInput.success) {
     return { failure: "Invalid input" };
@@ -24,3 +19,4 @@ export async function translateStudyPlan(input: TranslateInput) {
     return { failure: "Could not translate study plan." };
   }
 }
+

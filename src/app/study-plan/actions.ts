@@ -1,18 +1,12 @@
 
 "use server";
 
-import { personalizedStudyPlan, type PersonalizedStudyPlanInput } from "@/ai/flows/personalized-study-plan";
-import { saveStudyPlanToLibrary, type SaveStudyPlanInput } from "@/ai/flows/save-study-plan-flow";
-import { z } from "zod";
-
-const ActionInputSchema = z.object({
-  userHistory: z.string(),
-  syllabus: z.string(),
-  preferredLanguage: z.string(),
-});
+import { personalizedStudyPlan } from "@/ai/flows/personalized-study-plan";
+import { saveStudyPlanToLibrary } from "@/ai/flows/save-study-plan-flow";
+import { type PersonalizedStudyPlanInput, PersonalizedStudyPlanInputSchema, type SaveStudyPlanInput, SaveStudyPlanInputSchema } from "@/ai/schemas";
 
 export async function generateStudyPlan(input: PersonalizedStudyPlanInput) {
-  const validatedInput = ActionInputSchema.safeParse(input);
+  const validatedInput = PersonalizedStudyPlanInputSchema.safeParse(input);
 
   if (!validatedInput.success) {
     return { failure: "Invalid input" };
@@ -27,12 +21,8 @@ export async function generateStudyPlan(input: PersonalizedStudyPlanInput) {
   }
 }
 
-const SaveActionInputSchema = z.object({
-  content: z.string(),
-});
-
 export async function saveStudyPlan(input: SaveStudyPlanInput) {
-    const validatedInput = SaveActionInputSchema.safeParse(input);
+    const validatedInput = SaveStudyPlanInputSchema.safeParse(input);
 
     if (!validatedInput.success) {
         return { failure: "Invalid input" };
@@ -46,3 +36,4 @@ export async function saveStudyPlan(input: SaveStudyPlanInput) {
         return { failure: "Could not save study plan." };
     }
 }
+

@@ -18,7 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { ListStudyPlansOutput } from "@/ai/flows/save-study-plan-flow";
+import type { ListStudyPlansOutput } from "@/ai/schemas";
 import { Download, Loader2, Globe } from "lucide-react";
 import { translateStudyPlan } from "./actions";
 
@@ -110,4 +110,3 @@ export function MyLibraryClient({ initialStudyPlans }: MyLibraryClientProps) {
     </div>
   );
 }
-
