@@ -1,3 +1,4 @@
+
 {
     "home": "ಮುಖಪುಟ",
     "switchLanguage": "ಭಾಷೆ ಬದಲಾಯಿಸಿ",
@@ -10,6 +11,7 @@
         "syllabus": "ಪಠ್ಯಕ್ರಮ",
         "practice": "ಅಭ್ಯಾಸ",
         "mocktests": "ಅಣಕು ಪರೀಕ್ಷೆಗಳು",
+        "previousPapers": "ಹಿಂದಿನ ಪತ್ರಿಕೆಗಳು",
         "studyplan": "ಅಧ್ಯಯನ ಯೋಜನೆ",
         "mylibrary": "ನನ್ನ ಲೈಬ್ರರಿ"
     }

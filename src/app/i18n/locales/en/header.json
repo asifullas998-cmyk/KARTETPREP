@@ -1,3 +1,4 @@
+
 {
     "home": "Home",
     "switchLanguage": "Switch language",
@@ -10,6 +11,7 @@
         "syllabus": "Syllabus",
         "practice": "Practice",
         "mocktests": "Mock Tests",
+        "previousPapers": "Previous Papers",
         "studyplan": "Study Plan",
         "mylibrary": "My Library"
     }

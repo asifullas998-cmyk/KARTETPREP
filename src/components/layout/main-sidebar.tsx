@@ -24,45 +24,48 @@ import {
   Library,
   FileClock,
 } from "lucide-react";
+import { useTranslation } from "@/app/i18n/client";
 
-export function MainSidebar() {
+export function MainSidebar({ lang }: { lang: string }) {
+  const { t } = useTranslation(lang, 'main-sidebar');
   const pathname = usePathname();
+  const currentLang = pathname.split('/')[1];
 
   const menuItems = [
-    { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-    { href: "/syllabus", label: "Syllabus", icon: BookOpen },
-    { href: "/practice", label: "Practice", icon: Pencil },
-    { href: "/mock-tests", label: "Mock Tests", icon: FileText },
-    { href: "/previous-papers", label: "Previous Papers", icon: FileClock },
-    { href: "/study-plan", label: "Study Plan", icon: Bot },
-    { href: "/my-library", label: "My Library", icon: Library },
+    { href: `/${currentLang}/dashboard`, label: t('dashboard'), icon: LayoutDashboard },
+    { href: `/${currentLang}/syllabus`, label: t('syllabus'), icon: BookOpen },
+    { href: `/${currentLang}/practice`, label: t('practice'), icon: Pencil },
+    { href: `/${currentLang}/mock-tests`, label: t('mockTests'), icon: FileText },
+    { href: `/${currentLang}/previous-papers`, label: t('previousPapers'), icon: FileClock },
+    { href: `/${currentLang}/study-plan`, label: t('studyPlan'), icon: Bot },
+    { href: `/${currentLang}/my-library`, label: t('myLibrary'), icon: Library },
   ];
 
   return (
     <>
       <SidebarHeader>
         <Link
-          href="/"
+          href={`/${currentLang}`}
           className="flex items-center gap-2 font-bold text-lg font-headline text-primary"
         >
           <Icons.logo className="w-6 h-6" />
-          <span>KARTET Prep</span>
+          <span>{t('appTitle')}</span>
         </Link>
       </SidebarHeader>
 
       <SidebarMenu>
         {menuItems.map((item) => (
           <SidebarMenuItem key={item.href}>
-            <SidebarMenuButton
-              isActive={pathname === item.href}
-              tooltip={item.label}
-              asChild
-            >
-              <Link href={item.href}>
+            <Link href={item.href} passHref legacyBehavior>
+                <SidebarMenuButton
+                as="a"
+                isActive={pathname === item.href}
+                tooltip={item.label}
+                >
                 <item.icon />
                 <span>{item.label}</span>
-              </Link>
-            </SidebarMenuButton>
+                </SidebarMenuButton>
+            </Link>
           </SidebarMenuItem>
         ))}
       </SidebarMenu>
@@ -71,7 +74,7 @@ export function MainSidebar() {
         <Separator className="my-2" />
         <Button variant="ghost" className="w-full justify-start gap-2">
           <LogOut className="w-4 h-4" />
-          Logout
+          {t('logout')}
         </Button>
       </SidebarFooter>
     </>

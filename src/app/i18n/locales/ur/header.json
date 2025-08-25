@@ -1,3 +1,4 @@
+
 {
     "home": "گھر",
     "switchLanguage": "زبان تبدیل کریں",
@@ -10,6 +11,7 @@
         "syllabus": "نصاب",
         "practice": "مشق",
         "mocktests": "فرضی ٹیسٹ",
+        "previousPapers": "پچھلے پرچے",
         "studyplan": "مطالعاتی منصوبہ",
         "mylibrary": "میری لائبریری"
     }

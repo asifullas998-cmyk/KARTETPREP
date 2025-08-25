@@ -23,26 +23,21 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { getQuestionPaper } from "@/app/[lang]/previous-papers/actions";
+import { getQuestionPaper } from "./actions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 import { type GenerateQuestionPaperOutput } from "@/ai/schemas";
 import { Badge } from "@/components/ui/badge";
+import { useTranslation } from "@/app/i18n/client";
+
 
 const formSchema = z.object({
   subject: z.string({ required_error: "Please select a subject." }),
   language: z.string({ required_error: "Please select a language." }),
 });
 
-const topics = {
-    "cdp": "Child Development and Pedagogy",
-    "lang1": "Language I",
-    "lang2": "Language II",
-    "maths": "Mathematics",
-    "evs": "Environmental Studies",
-};
-
-export function QuestionPaperClient() {
+export function QuestionPaperClient({ lang }: { lang: string }) {
+  const { t } = useTranslation(lang, 'previous-papers');
   const [isLoading, setIsLoading] = useState(false);
   const [questionPaper, setQuestionPaper] = useState<GenerateQuestionPaperOutput | null>(null);
   const { toast } = useToast();
@@ -50,9 +45,17 @@ export function QuestionPaperClient() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      language: "en",
+      language: lang,
     },
   });
+
+  const topics: Record<string, string> = {
+    "cdp": t('topics.cdp'),
+    "lang1": t('topics.lang1'),
+    "lang2": t('topics.lang2'),
+    "maths": t('topics.maths'),
+    "evs": t('topics.evs'),
+  };
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
@@ -63,13 +66,13 @@ export function QuestionPaperClient() {
     if (result.success) {
       setQuestionPaper(result.success);
       toast({
-        title: "Success!",
-        description: "Your question paper has been generated.",
+        title: t('toast.success.title'),
+        description: t('toast.success.description'),
       });
     } else {
       toast({
         variant: "destructive",
-        title: "Error",
+        title: t('toast.error.title'),
         description: result.failure,
       });
     }
@@ -85,11 +88,11 @@ export function QuestionPaperClient() {
                 name="subject"
                 render={({ field }) => (
                 <FormItem>
-                    <FormLabel>Subject</FormLabel>
+                    <FormLabel>{t('form.subject.label')}</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                         <SelectTrigger>
-                        <SelectValue placeholder="Select a subject" />
+                        <SelectValue placeholder={t('form.subject.placeholder')} />
                         </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -107,17 +110,17 @@ export function QuestionPaperClient() {
                 name="language"
                 render={({ field }) => (
                 <FormItem>
-                    <FormLabel>Language</FormLabel>
+                    <FormLabel>{t('form.language.label')}</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                         <SelectTrigger>
-                        <SelectValue placeholder="Select a language" />
+                        <SelectValue placeholder={t('form.language.placeholder')} />
                         </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                        <SelectItem value="en">English</SelectItem>
-                        <SelectItem value="kn">ಕನ್ನಡ (Kannada)</SelectItem>
-                        <SelectItem value="ur">اردو (Urdu)</SelectItem>
+                        <SelectItem value="en">{t('languages.en')}</SelectItem>
+                        <SelectItem value="kn">{t('languages.kn')}</SelectItem>
+                        <SelectItem value="ur">{t('languages.ur')}</SelectItem>
                     </SelectContent>
                     </Select>
                     <FormMessage />
@@ -129,7 +132,7 @@ export function QuestionPaperClient() {
 
           <Button type="submit" disabled={isLoading}>
             {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Generate Paper
+            {t('form.generateButton')}
           </Button>
         </form>
       </Form>
@@ -137,7 +140,7 @@ export function QuestionPaperClient() {
       {questionPaper && questionPaper.questions.length > 0 && (
         <Card className="mt-8">
           <CardHeader>
-            <CardTitle className="font-headline">Generated Question Paper</CardTitle>
+            <CardTitle className="font-headline">{t('result.title')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             {questionPaper.questions.map((q, index) => (
@@ -152,7 +155,7 @@ export function QuestionPaperClient() {
                         ))}
                     </ul>
                     <div className="pt-2">
-                      <Badge variant="secondary">Correct Answer: {q.correctAnswer}</Badge>
+                      <Badge variant="secondary">{t('result.correctAnswer')}: {q.correctAnswer}</Badge>
                     </div>
                 </div>
             ))}

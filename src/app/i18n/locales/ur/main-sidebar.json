@@ -1,9 +1,11 @@
+
 {
     "appTitle": "KARTET تیاری",
     "dashboard": "ڈیش بورڈ",
     "syllabus": "نصاب",
     "practice": "مشق",
     "mockTests": "فرضی ٹیسٹ",
+    "previousPapers": "پچھلے پرچے",
     "studyPlan": "مطالعاتی منصوبہ",
     "myLibrary": "میری لائبریری",
     "logout": "لاگ آوٹ"

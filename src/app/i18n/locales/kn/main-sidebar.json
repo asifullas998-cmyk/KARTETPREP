@@ -1,9 +1,11 @@
+
 {
     "appTitle": "KARTET ತಯಾರಿ",
     "dashboard": "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
     "syllabus": "ಪಠ್ಯಕ್ರಮ",
     "practice": "ಅಭ್ಯಾಸ",
     "mockTests": "ಅಣಕು ಪರೀಕ್ಷೆಗಳು",
+    "previousPapers": "ಹಿಂದಿನ ಪತ್ರಿಕೆಗಳು",
     "studyPlan": "ಅಧ್ಯಯನ ಯೋಜನೆ",
     "myLibrary": "ನನ್ನ ಲೈಬ್ರರಿ",
     "logout": "ಲಾಗ್‌ಔಟ್"

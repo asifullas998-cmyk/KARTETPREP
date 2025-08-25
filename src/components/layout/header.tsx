@@ -11,32 +11,42 @@ import {
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Globe, UserCircle } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useTranslation } from "@/app/i18n/client";
+import { languages } from "@/app/i18n/settings";
 
-const pageTitles: Record<string, string> = {
-    "/dashboard": "Dashboard",
-    "/syllabus": "Syllabus",
-    "/practice": "Practice",
-    "/mock-tests": "Mock Tests",
-    "/mock-tests/paper-1": "Mock Test",
-    "/mock-tests/paper-2": "Mock Test",
-    "/study-plan": "Study Plan",
-    "/my-library": "My Library",
-    "/login": "Login",
-    "/register": "Register",
-};
+export function Header({ lang }: { lang: string }) {
+    const { t } = useTranslation(lang, 'header');
+    const pathname = usePathname();
+    const router = useRouter();
 
+    const pageTitles: Record<string, string> = {
+        "dashboard": t('pageTitles.dashboard'),
+        "syllabus": t('pageTitles.syllabus'),
+        "practice": t('pageTitles.practice'),
+        "mock-tests": t('pageTitles.mocktests'),
+        "previous-papers": t('pageTitles.previousPapers'),
+        "study-plan": t('pageTitles.studyplan'),
+        "my-library": t('pageTitles.mylibrary'),
+        "login": t('login'),
+        "register": t('register'),
+    };
 
-export function Header() {
-  const pathname = usePathname();
+    const getPageTitle = (path: string) => {
+        const pathSegments = path.split('/').filter(Boolean);
+        const pageKey = pathSegments[1] || '';
+        
+        if (pageKey.startsWith('mock-tests') && pathSegments.length > 2) {
+            return t('pageTitles.mocktests');
+        }
 
-  const getPageTitle = (path: string) => {
-    // For dynamic routes like /mock-tests/[id]
-    if (path.startsWith('/mock-tests/')) {
-        return pageTitles['/mock-tests/paper-1'];
-    }
-    return pageTitles[path] || "KARTET Prep";
-  };
+        return pageTitles[pageKey] || t('home');
+    };
+
+    const handleLanguageChange = (newLang: string) => {
+        const newPath = pathname.replace(`/${lang}`, `/${newLang}`);
+        router.push(newPath);
+    };
 
   return (
     <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:px-8">
@@ -51,13 +61,13 @@ export function Header() {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon">
               <Globe className="h-5 w-5" />
-              <span className="sr-only">Switch language</span>
+              <span className="sr-only">{t('switchLanguage')}</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem>English</DropdownMenuItem>
-            <DropdownMenuItem>ಕನ್ನಡ (Kannada)</DropdownMenuItem>
-            <DropdownMenuItem>اردو (Urdu)</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleLanguageChange('en')}>English</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleLanguageChange('kn')}>ಕನ್ನಡ (Kannada)</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleLanguageChange('ur')}>اردو (Urdu)</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
 
@@ -65,15 +75,15 @@ export function Header() {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon">
               <UserCircle className="h-6 w-6" />
-              <span className="sr-only">User menu</span>
+              <span className="sr-only">{t('userMenu')}</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem asChild>
-              <Link href="/login">Login</Link>
+              <Link href={`/${lang}/login`}>{t('login')}</Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link href="/register">Register</Link>
+              <Link href={`/${lang}/register`}>{t('register')}</Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

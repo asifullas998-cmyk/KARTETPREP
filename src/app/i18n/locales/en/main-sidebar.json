@@ -1,9 +1,11 @@
+
 {
     "appTitle": "KARTET Prep",
     "dashboard": "Dashboard",
     "syllabus": "Syllabus",
     "practice": "Practice",
     "mockTests": "Mock Tests",
+    "previousPapers": "Previous Papers",
     "studyPlan": "Study Plan",
     "myLibrary": "My Library",
     "logout": "Logout"

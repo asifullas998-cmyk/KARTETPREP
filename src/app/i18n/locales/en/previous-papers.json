@@ -1,0 +1,43 @@
+
+{
+    "title": "Previous Year Papers (AI Enhanced)",
+    "description": "Generate a question paper of important questions for a subject.",
+    "form": {
+        "title": "Generate Question Paper",
+        "description": "Select a subject and language to generate a paper with AI-curated important questions.",
+        "subject": {
+            "label": "Subject",
+            "placeholder": "Select a subject"
+        },
+        "language": {
+            "label": "Language",
+            "placeholder": "Select a language"
+        },
+        "generateButton": "Generate Paper"
+    },
+    "topics": {
+        "cdp": "Child Development and Pedagogy",
+        "lang1": "Language I",
+        "lang2": "Language II",
+        "maths": "Mathematics",
+        "evs": "Environmental Studies"
+    },
+    "languages": {
+        "en": "English",
+        "kn": "ಕನ್ನಡ (Kannada)",
+        "ur": "اردو (Urdu)"
+    },
+    "result": {
+        "title": "Generated Question Paper",
+        "correctAnswer": "Correct Answer"
+    },
+    "toast": {
+        "success": {
+            "title": "Success!",
+            "description": "Your question paper has been generated."
+        },
+        "error": {
+            "title": "Error"
+        }
+    }
+}

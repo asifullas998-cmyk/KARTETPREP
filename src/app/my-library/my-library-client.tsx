@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -19,9 +20,8 @@ import {
 } from "@/components/ui/select";
 import type { ListStudyPlansOutput } from "@/ai/schemas";
 import { Download, Loader2, Globe } from "lucide-react";
-import { translateStudyPlan } from "./actions";
+import { translateStudyPlan } from "../[lang]/my-library/actions";
 import { NotoNastaliqUrdu } from "@/lib/fonts";
-import { jsPDF } from "jspdf";
 
 interface MyLibraryClientProps {
   initialStudyPlans: ListStudyPlansOutput;
@@ -32,6 +32,7 @@ export function MyLibraryClient({ initialStudyPlans }: MyLibraryClientProps) {
   const [translatingId, setTranslatingId] = useState<string | null>(null);
 
   const handleDownloadPdf = async (content: string) => {
+    const { jsPDF } = await import("jspdf");
     const doc = new jsPDF();
     
     const isUrdu = /[\u0600-\u06FF]/.test(content);
