@@ -31,45 +31,66 @@ const allQuestions: AllQuestions = {
     cdp: [
       { id: 1, text: "Which is a characteristic of Piaget's Concrete Operational stage?", options: ["Abstract reasoning", "Egocentrism", "Conservation", "Hypothetical thinking"], correctAnswer: "Conservation" },
       { id: 2, text: "According to Vygotsky, learning occurs in the:", options: ["Zone of Proximal Development", "Sensorimotor Stage", "Preoperational Stage", "Formal Operational Stage"], correctAnswer: "Zone of Proximal Development" },
+      { id: 6, text: "Erikson's stage of 'Initiative vs. Guilt' corresponds to which age group?", options: ["Infancy", "Preschool", "School Age", "Adolescence"], correctAnswer: "Preschool" },
+      { id: 7, text: "A key concept in constructivism is that learners:", options: ["Passively receive information", "Actively construct knowledge", "Are motivated by rewards", "Learn through imitation"], correctAnswer: "Actively construct knowledge"},
     ],
     maths: [
-      { id: 3, text: "Which of the following is NOT a primary color?", options: ["Red", "Yellow", "Green", "Blue"], correctAnswer: "Green" },
+      { id: 3, text: "If the area of a square is 64 sq. cm, what is its perimeter?", options: ["16 cm", "32 cm", "24 cm", "64 cm"], correctAnswer: "32 cm" },
+      { id: 8, text: "What is the value of 3/5 + 1/4?", options: ["4/9", "17/20", "3/20", "1"], correctAnswer: "17/20"},
+      { id: 9, text: "Which of the following is a prime number?", options: ["15", "27", "31", "39"], correctAnswer: "31"},
     ],
     evs: [
         { id: 4, text: "What is the capital of Karnataka?", options: ["Mysuru", "Bengaluru", "Mangaluru", "Hubballi"], correctAnswer: "Bengaluru" },
+        { id: 10, text: "Which gas is most abundant in the Earth's atmosphere?", options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Argon"], correctAnswer: "Nitrogen"},
+        { id: 11, text: "The 'Chipko Movement' is associated with:", options: ["Water conservation", "Forest conservation", "Soil conservation", "Air pollution"], correctAnswer: "Forest conservation"},
     ],
     lang1: [
         { id: 5, text: "The 'Right to Education' Act in India was enacted in which year?", options: ["2005", "2009", "2012", "2015"], correctAnswer: "2009" },
+        { id: 12, text: "In the word 'unbelievable', what is the prefix?", options: ["un", "believe", "able", "li"], correctAnswer: "un"},
     ]
   },
   kn: {
     cdp: [
       { id: 1, text: "ಪಿಯಾಗೆಟ್‌ನ ಕಾಂಕ್ರೀಟ್ ಆಪರೇಷನಲ್ ಹಂತದ ಗುಣಲಕ್ಷಣ ಯಾವುದು?", options: ["ಅಮೂರ್ತ ತಾರ್ಕಿಕತೆ", "ಅಹಂಕಾರ", "ಸಂರಕ್ಷಣೆ", "ಕಾಲ್ಪನಿಕ ಚಿಂತನೆ"], correctAnswer: "ಸಂರಕ್ಷಣೆ" },
       { id: 2, text: "ವೈಗೋಟ್ಸ್ಕಿಯ ಪ್ರಕಾರ, ಕಲಿಕೆ ಎಲ್ಲಿ ನಡೆಯುತ್ತದೆ:", options: ["ಸಮೀಪದ ಅಭಿವೃದ್ಧಿ ವಲಯ", "ಸಂವೇದನಾಶೀಲ ಹಂತ", "ಕಾರ್ಯಾಚರಣೆಯ ಪೂರ್ವ ಹಂತ", "ಔಪಚಾರಿಕ ಕಾರ್ಯಾಚರಣೆಯ ಹಂತ"], correctAnswer: "ಸಮೀಪದ ಅಭಿವೃದ್ಧಿ ವಲಯ" },
+      { id: 6, text: "ಎರಿಕ್ಸನ್ ಅವರ 'ಉಪಕ್ರಮ vs. ಅಪರಾಧ' ಹಂತವು ಯಾವ ವಯಸ್ಸಿನ ಗುಂಪಿಗೆ ಅನುರೂಪವಾಗಿದೆ?", options: ["ಶೈಶವಾವಸ್ಥೆ", "ಶಾಲಾಪೂರ್ವ", "ಶಾಲಾ ವಯಸ್ಸು", "ಹದಿಹರೆಯ"], correctAnswer: "ಶಾಲಾಪೂರ್ವ" },
+      { id: 7, text: "ರಚನಾತ್ಮಕವಾದದ ಪ್ರಮುಖ ಪರಿಕಲ್ಪನೆಯೆಂದರೆ ಕಲಿಯುವವರು:", options: ["ನಿಷ್ಕ್ರಿಯವಾಗಿ ಮಾಹಿತಿಯನ್ನು ಸ್ವೀಕರಿಸುತ್ತಾರೆ", "ಸಕ್ರಿಯವಾಗಿ ಜ್ಞಾನವನ್ನು ನಿರ್ಮಿಸುತ್ತಾರೆ", "ಬಹುಮಾನಗಳಿಂದ ಪ್ರೇರೇಪಿಸಲ್ಪಡುತ್ತಾರೆ", "ಅನುಕರಣೆಯ ಮೂಲಕ ಕಲಿಯುತ್ತಾರೆ"], correctAnswer: "ಸಕ್ರಿಯವಾಗಿ ಜ್ಞಾನವನ್ನು ನಿರ್ಮಿಸುತ್ತಾರೆ"},
     ],
     maths: [
-        { id: 3, text: "ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಪ್ರಾಥಮಿಕ ಬಣ್ಣವಲ್ಲ?", options: ["ಕೆಂಪು", "ಹಳದಿ", "ಹಸಿರು", "ನೀಲಿ"], correctAnswer: "ಹಸಿರು" },
+        { id: 3, text: "ಒಂದು ಚೌಕದ ವಿಸ್ತೀರ್ಣ 64 ಚ.ಸೆಂ.ಮೀ ಆದರೆ, ಅದರ ಪರಿಧಿ ಎಷ್ಟು?", options: ["16 ಸೆಂ.ಮೀ", "32 ಸೆಂ.ಮೀ", "24 ಸೆಂ.ಮೀ", "64 ಸೆಂ.ಮೀ"], correctAnswer: "32 ಸೆಂ.ಮೀ" },
+        { id: 8, text: "3/5 + 1/4 ರ ಮೌಲ್ಯವೇನು?", options: ["4/9", "17/20", "3/20", "1"], correctAnswer: "17/20"},
+        { id: 9, text: "ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಅವಿಭಾಜ್ಯ ಸಂಖ್ಯೆ?", options: ["15", "27", "31", "39"], correctAnswer: "31"},
     ],
     evs: [
         { id: 4, text: "ಕರ್ನಾಟಕದ ರಾಜಧಾನಿ ಯಾವುದು?", options: ["ಮೈಸೂರು", "ಬೆಂಗಳೂರು", "ಮಂಗಳೂರು", "ಹುಬ್ಬಳ್ಳಿ"], correctAnswer: "ಬೆಂಗಳೂರು" },
+        { id: 10, text: "ಭೂಮಿಯ ವಾತಾವರಣದಲ್ಲಿ ಅತಿ ಹೆಚ್ಚು ಇರುವ ಅನಿಲ ಯಾವುದು?", options: ["ಆಮ್ಲಜನಕ", "ಇಂಗಾಲದ ಡೈಆಕ್ಸೈಡ್", "ಸಾರಜನಕ", "ಆರ್ಗಾನ್"], correctAnswer: "ಸಾರಜನಕ"},
+        { id: 11, text: "'ಚಿಪ್ಕೊ ಚಳುವಳಿ' ಯಾವುದಕ್ಕೆ ಸಂಬಂಧಿಸಿದೆ:", options: ["ಜಲ ಸಂರಕ್ಷಣೆ", "ಅರಣ್ಯ ಸಂರಕ್ಷಣೆ", "ಮಣ್ಣು ಸಂರಕ್ಷಣೆ", "ವಾಯು ಮಾಲಿನ್ಯ"], correctAnswer: "ಅರಣ್ಯ ಸಂರಕ್ಷಣೆ"},
     ],
     lang1: [
         { id: 5, text: "ಭಾರತದಲ್ಲಿ 'ಶಿಕ್ಷಣ ಹಕ್ಕು' ಕಾಯ್ದೆಯನ್ನು ಯಾವ ವರ್ಷದಲ್ಲಿ ಜಾರಿಗೊಳಿಸಲಾಯಿತು?", options: ["2005", "2009", "2012", "2015"], correctAnswer: "2009" },
+        { id: 12, text: "'unbelievable' ಪದದಲ್ಲಿ, ಪೂರ್ವಪ್ರತ್ಯಯ ಯಾವುದು?", options: ["un", "believe", "able", "li"], correctAnswer: "un"},
     ]
   },
   ur: {
     cdp: [
       { id: 1, text: "پیاجے کے ٹھوس عملی مرحلے کی خصوصیت کیا ہے؟", options: ["خلاصہ استدلال", "خود پسندی", "تحفظ", "فرضی سوچ"], correctAnswer: "تحفظ" },
       { id: 2, text: "وائیگاٹسکی کے مطابق، سیکھنے کا عمل کہاں ہوتا ہے:", options: ["قریبی ترقی کا زون", "حسی حرکی مرحلہ", "پری آپریشنل مرحلہ", "رسمی آپریشنل مرحلہ"], correctAnswer: "قریبی ترقی کا زون" },
+      { id: 6, text: "ایرکسن کا 'پہل بمقابلہ جرم' کا مرحلہ کس عمر کے گروپ سے مطابقت رکھتا ہے؟", options: ["بچپن", "پری اسکول", "اسکول کی عمر", "جوانی"], correctAnswer: "پری اسکول" },
+      { id: 7, text: "تعمیر پسندی کا ایک کلیدی تصور یہ ہے کہ سیکھنے والے:", options: ["غیر فعال طور پر معلومات حاصل کرتے ہیں", "فعال طور پر علم کی تعمیر کرتے ہیں", "انعامات سے حوصلہ افزائی کرتے ہیں", "نقل کے ذریعے سیکھتے ہیں"], correctAnswer: "فعال طور پر علم کی تعمیر کرتے ہیں"},
     ],
     maths: [
-        { id: 3, text: "مندرجہ ذیل میں سے کون سا بنیادی رنگ نہیں ہے؟", options: ["سرخ", "پیلا", "سبز", "نیلا"], correctAnswer: "سبز" },
+        { id: 3, text: "اگر ایک مربع کا رقبہ 64 مربع سینٹی میٹر ہے، تو اس کا احاطہ کیا ہے؟", options: ["16 سینٹی میٹر", "32 سینٹی میٹر", "24 سینٹی میٹر", "64 سینٹی میٹر"], correctAnswer: "32 سینٹی میٹر" },
+        { id: 8, text: "3/5 + 1/4 کی قیمت کیا ہے؟", options: ["4/9", "17/20", "3/20", "1"], correctAnswer: "17/20"},
+        { id: 9, text: "مندرجہ ذیل میں سے کون سا عدد مفرد ہے؟", options: ["15", "27", "31", "39"], correctAnswer: "31"},
     ],
     evs: [
         { id: 4, text: "کرناٹک کا دارالحکومت کیا ہے؟", options: ["میسور", "بنگلورو", "منگلورو", "ہبلی"], correctAnswer: "بنگلورو" },
+        { id: 10, text: "زمین کی فضا میں سب سے زیادہ کون سی گیس پائی جاتی ہے؟", options: ["آکسیجن", "کاربن ڈائی آکسائیڈ", "نائٹروجن", "آرگن"], correctAnswer: "نائٹروجن"},
+        { id: 11, text: "'چپکو تحریک' کس سے وابستہ ہے:", options: ["پانی کا تحفظ", "جنگلات کا تحفظ", "مٹی کا تحفظ", "فضائی آلودگی"], correctAnswer: "جنگلات کا تحفظ"},
     ],
     lang1: [
         { id: 5, text: "ہندوستان میں 'تعلیم کا حق' ایکٹ کس سال نافذ کیا گیا؟", options: ["2005", "2009", "2012", "2015"], correctAnswer: "2009" },
+        { id: 12, text: "لفظ 'unbelievable' میں، سابقہ کیا ہے؟", options: ["un", "believe", "able", "li"], correctAnswer: "un"},
     ]
   }
 };
@@ -94,7 +115,11 @@ export default function PracticePage() {
     useEffect(() => {
         const newQuestions = allQuestions[language][topic] || [];
         setQuestions(newQuestions);
-        setCurrentQuestion(newQuestions[0]);
+        if (newQuestions.length > 0) {
+            setCurrentQuestion(newQuestions[Math.floor(Math.random() * newQuestions.length)]);
+        } else {
+            setCurrentQuestion(undefined as any);
+        }
         setFeedback(null);
         setSelectedOption(null);
     }, [language, topic]);
