@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['"PT Sans"', 'var(--font-lateef)', 'sans-serif'],
-        headline: ['"PT Sans"', 'var(--font-lateef)', 'sans-serif'],
+        body: ['"PT Sans"', 'var(--font-noto-nastaliq-urdu)', 'sans-serif'],
+        headline: ['"PT Sans"', 'var(--font-noto-nastaliq-urdu)', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
