@@ -5,7 +5,7 @@ import { SidebarProvider, Sidebar, SidebarInset } from '@/components/ui/sidebar'
 import { MainSidebar } from '@/components/layout/main-sidebar';
 import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
-import { Noto_Nastaliq_Urdu, PT_Sans } from 'next/font/google';
+import { Lateef, PT_Sans } from 'next/font/google';
 
 const ptSans = PT_Sans({
   subsets: ['latin'],
@@ -13,10 +13,10 @@ const ptSans = PT_Sans({
   variable: '--font-pt-sans',
 });
 
-const notoNastaliqUrdu = Noto_Nastaliq_Urdu({
+const lateef = Lateef({
   subsets: ['arabic'],
   weight: ['400', '700'],
-  variable: '--font-noto-nastaliq-urdu',
+  variable: '--font-lateef',
 });
 
 
@@ -38,7 +38,7 @@ export default function RootLayout({
         className={cn(
           'min-h-screen bg-background font-body antialiased',
           ptSans.variable,
-          notoNastaliqUrdu.variable
+          lateef.variable
         )}
       >
         <SidebarProvider>

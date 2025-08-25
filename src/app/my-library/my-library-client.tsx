@@ -36,11 +36,11 @@ export function MyLibraryClient({ initialStudyPlans }: MyLibraryClientProps) {
     
     const isUrdu = /[\u0600-\u06FF]/.test(content);
 
-    doc.addFileToVFS("NotoNastaliqUrdu-Regular.ttf", NotoNastaliqUrdu);
-    doc.addFont("NotoNastaliqUrdu-Regular.ttf", "NotoNastaliqUrdu", "normal");
+    doc.addFileToVFS("Lateef-Regular.ttf", NotoNastaliqUrdu);
+    doc.addFont("Lateef-Regular.ttf", "Lateef", "normal");
     
     if (isUrdu) {
-      doc.setFont("NotoNastaliqUrdu");
+      doc.setFont("Lateef");
     } else {
       doc.setFont("Helvetica");
     }
