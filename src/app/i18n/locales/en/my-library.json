@@ -1,0 +1,19 @@
+{
+    "title": "My Library",
+    "description": "View your saved study plans.",
+    "empty": {
+        "title": "Your Library is Empty",
+        "description": "You haven't saved any study plans yet. Generate one from the Study Plan page!"
+    },
+    "plan": {
+        "title": "Study Plan",
+        "createdOn": "Created on: {{date}}",
+        "downloadPdf": "Download PDF",
+        "translatePlaceholder": "Translate..."
+    },
+    "languages": {
+        "en": "English",
+        "kn": "ಕನ್ನಡ (Kannada)",
+        "ur": "اردو (Urdu)"
+    }
+}

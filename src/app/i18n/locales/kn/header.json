@@ -1,0 +1,16 @@
+{
+    "home": "ಮುಖಪುಟ",
+    "switchLanguage": "ಭಾಷೆ ಬದಲಾಯಿಸಿ",
+    "userMenu": "ಬಳಕೆದಾರ ಮೆನು",
+    "login": "ಲಾಗಿನ್",
+    "register": "ನೋಂದಣಿ",
+    "mockTest": "ಅಣಕು ಪರೀಕ್ಷೆ",
+    "pageTitles": {
+        "dashboard": "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+        "syllabus": "ಪಠ್ಯಕ್ರಮ",
+        "practice": "ಅಭ್ಯಾಸ",
+        "mocktests": "ಅಣಕು ಪರೀಕ್ಷೆಗಳು",
+        "studyplan": "ಅಧ್ಯಯನ ಯೋಜನೆ",
+        "mylibrary": "ನನ್ನ ಲೈಬ್ರರಿ"
+    }
+}

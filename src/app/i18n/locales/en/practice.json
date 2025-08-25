@@ -1,0 +1,31 @@
+{
+    "title": "Practice Questions",
+    "description": "Select your preferences and start practicing.",
+    "languageLabel": "Language",
+    "selectLanguagePlaceholder": "Select language",
+    "languages": {
+        "en": "English",
+        "kn": "ಕನ್ನಡ (Kannada)",
+        "ur": "اردو (Urdu)"
+    },
+    "topicLabel": "Topic",
+    "selectTopicPlaceholder": "Select topic",
+    "topics": {
+        "cdp": "Child Development and Pedagogy",
+        "lang1": "Language I",
+        "lang2": "Language II",
+        "maths": "Mathematics",
+        "evs": "Environmental Studies"
+    },
+    "questionTitle": "Question",
+    "noQuestions": "No questions available for the selected language and topic.",
+    "feedback": {
+        "correct": "Correct!",
+        "correctTitle": "Correct!",
+        "incorrect": "The correct answer is: {{correctAnswer}}",
+        "incorrectTitle": "Incorrect"
+    },
+    "nextQuestion": "Next Question",
+    "skip": "Skip",
+    "checkAnswer": "Check Answer"
+}

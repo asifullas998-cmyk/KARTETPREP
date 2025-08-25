@@ -1,0 +1,15 @@
+{
+    "notifications": {
+        "title": "ಅಧಿಸೂಚನೆಗಳು",
+        "description": "ಅಧಿಕೃತ ನವೀಕರಣಗಳು ಮತ್ತು ಪ್ರಕಟಣೆಗಳು.",
+        "resultsAnnounced": "KARTET 2024 ಫಲಿತಾಂಶಗಳು ಪ್ರಕಟಗೊಂಡಿವೆ.",
+        "newMockTest": "ಪತ್ರಿಕೆ II ಕ್ಕಾಗಿ ಹೊಸ ಅಣಕು ಪರೀಕ್ಷೆ ಲಭ್ಯವಿದೆ.",
+        "deadlineExtended": "KARTET 2025 ರ ಅರ್ಜಿ ಸಲ್ಲಿಕೆ ದಿನಾಂಕ ವಿಸ್ತರಿಸಲಾಗಿದೆ."
+    },
+    "time": {
+        "daysAgo_one": "{{count}} ದಿನದ ಹಿಂದೆ",
+        "daysAgo_other": "{{count}} ದಿನಗಳ ಹಿಂದೆ",
+        "weekAgo_one": "{{count}} ವಾರದ ಹಿಂದೆ",
+        "weekAgo_other": "{{count}} ವಾರಗಳ ಹಿಂದೆ"
+    }
+}

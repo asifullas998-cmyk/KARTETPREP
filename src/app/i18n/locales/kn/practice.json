@@ -1,0 +1,31 @@
+{
+    "title": "ಅಭ್ಯಾಸ ಪ್ರಶ್ನೆಗಳು",
+    "description": "ನಿಮ್ಮ ಆದ್ಯತೆಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ ಮತ್ತು ಅಭ್ಯಾಸವನ್ನು ಪ್ರಾರಂಭಿಸಿ.",
+    "languageLabel": "ಭಾಷೆ",
+    "selectLanguagePlaceholder": "ಭಾಷೆ ಆಯ್ಕೆಮಾಡಿ",
+    "languages": {
+        "en": "English",
+        "kn": "ಕನ್ನಡ (Kannada)",
+        "ur": "اردو (Urdu)"
+    },
+    "topicLabel": "ವಿಷಯ",
+    "selectTopicPlaceholder": "ವಿಷಯ ಆಯ್ಕೆಮಾಡಿ",
+    "topics": {
+        "cdp": "ಮಕ್ಕಳ ಅಭಿವೃದ್ಧಿ ಮತ್ತು ಶಿಕ್ಷಣಶಾಸ್ತ್ರ",
+        "lang1": "ಭಾಷೆ I",
+        "lang2": "ಭಾಷೆ II",
+        "maths": "ಗಣಿತ",
+        "evs": "ಪರಿಸರ ಅಧ್ಯಯನ"
+    },
+    "questionTitle": "ಪ್ರಶ್ನೆ",
+    "noQuestions": "ಆಯ್ದ ಭಾಷೆ ಮತ್ತು ವಿಷಯಕ್ಕೆ ಯಾವುದೇ ಪ್ರಶ್ನೆಗಳು ಲಭ್ಯವಿಲ್ಲ.",
+    "feedback": {
+        "correct": "ಸರಿಯಾಗಿದೆ!",
+        "correctTitle": "ಸರಿಯಾಗಿದೆ!",
+        "incorrect": "ಸರಿಯಾದ ಉತ್ತರ: {{correctAnswer}}",
+        "incorrectTitle": "ತಪ್ಪು"
+    },
+    "nextQuestion": "ಮುಂದಿನ ಪ್ರಶ್ನೆ",
+    "skip": "ಬಿಟ್ಟುಬಿಡಿ",
+    "checkAnswer": "ಉತ್ತರ ಪರಿಶೀಲಿಸಿ"
+}

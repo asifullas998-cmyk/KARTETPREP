@@ -12,20 +12,27 @@ import { Globe, UserCircle } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+const pageTitles: Record<string, string> = {
+    "/dashboard": "Dashboard",
+    "/syllabus": "Syllabus",
+    "/practice": "Practice",
+    "/mock-tests": "Mock Tests",
+    "/mock-tests/paper-1": "Mock Test",
+    "/mock-tests/paper-2": "Mock Test",
+    "/study-plan": "Study Plan",
+    "/my-library": "My Library",
+    "/login": "Login",
+    "/register": "Register",
+};
+
+
 export function Header() {
   const pathname = usePathname();
 
   const getPageTitle = (path: string) => {
-    if (path === "/") return "Home";
-    const name = path.split("/").pop() || "Page";
-    if (name.match(/^[0-9]+$/)) {
-      const parts = path.split("/");
-      const prev = parts[parts.length-2];
-      return `Mock Test: ${prev.charAt(0).toUpperCase() + prev.slice(1)}`;
-    }
-    return name.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
+    return pageTitles[path] || "KARTET Prep";
   };
-  
+
   return (
     <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:px-8">
       <div className="md:hidden">

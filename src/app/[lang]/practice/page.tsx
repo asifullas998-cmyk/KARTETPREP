@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { CheckCircle2, XCircle } from "lucide-react";
+import { useTranslation } from "@/app/i18n/client";
 
 type Question = {
   id: number;
@@ -94,38 +95,22 @@ const allQuestions: AllQuestions = {
   }
 };
 
-
-const topics: Record<string, any> = {
-    en: {
-        "cdp": "Child Development and Pedagogy",
-        "lang1": "Language I",
-        "lang2": "Language II",
-        "maths": "Mathematics",
-        "evs": "Environmental Studies",
-    },
-    kn: {
-        "cdp": "ಮಕ್ಕಳ ಅಭಿವೃದ್ಧಿ ಮತ್ತು ಶಿಕ್ಷಣಶಾಸ್ತ್ರ",
-        "lang1": "ಭಾಷೆ I",
-        "lang2": "ಭಾಷೆ II",
-        "maths": "ಗಣಿತ",
-        "evs": "ಪರಿಸರ ಅಧ್ಯಯನ",
-    },
-    ur: {
-        "cdp": "بچوں کی ترقی اور درس و تدریس",
-        "lang1": "زبان اول",
-        "lang2": "زبان دوم",
-        "maths": "ریاضی",
-        "evs": "ماحولیاتی مطالعہ",
-    }
-};
-
-export default function PracticePage() {
-    const [language, setLanguage] = useState("en");
+export default function PracticePage({ params: { lang } }: { params: { lang: string } }) {
+    const { t } = useTranslation(lang, 'practice');
+    const [language, setLanguage] = useState(lang);
     const [topic, setTopic] = useState("cdp");
     const [questions, setQuestions] = useState(allQuestions[language][topic] || []);
     const [currentQuestion, setCurrentQuestion] = useState<Question | undefined>(questions[0]);
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
     const [feedback, setFeedback] = useState<{correct: boolean; message: string} | null>(null);
+
+    const topics: Record<string, any> = {
+      cdp: t('topics.cdp'),
+      lang1: t('topics.lang1'),
+      lang2: t('topics.lang2'),
+      maths: t('topics.maths'),
+      evs: t('topics.evs'),
+    };
 
     useEffect(() => {
         const newQuestions = allQuestions[language]?.[topic] || [];
@@ -139,6 +124,12 @@ export default function PracticePage() {
         setSelectedOption(null);
     }, [language, topic]);
 
+    useEffect(() => {
+      if (lang !== language) {
+        setLanguage(lang);
+      }
+    }, [lang, language]);
+
     const fetchNewQuestion = () => {
         setFeedback(null);
         setSelectedOption(null);
@@ -149,26 +140,12 @@ export default function PracticePage() {
     const handleCheckAnswer = () => {
         if (!selectedOption || !currentQuestion) return;
         const isCorrect = selectedOption === currentQuestion.correctAnswer;
-        const correctMessage: Record<string, string> = {
-          en: "Correct!",
-          kn: "ಸರಿಯಾಗಿದೆ!",
-          ur: "صحیح!",
-        };
-        const incorrectMessage: Record<string, string> = {
-            en: `The correct answer is: ${currentQuestion.correctAnswer}`,
-            kn: `ಸರಿಯಾದ ಉತ್ತರ: ${currentQuestion.correctAnswer}`,
-            ur: `صحیح جواب ہے: ${currentQuestion.correctAnswer}`,
-        }
         setFeedback({
             correct: isCorrect,
-            message: isCorrect ? correctMessage[language] : incorrectMessage[language]
+            message: isCorrect ? t('feedback.correct') : t('feedback.incorrect', { correctAnswer: currentQuestion.correctAnswer })
         });
     };
     
-    const handleLanguageChange = (newLanguage: string) => {
-        setLanguage(newLanguage);
-    };
-
     const handleTopicChange = (newTopic: string) => {
         setTopic(newTopic);
     };
@@ -176,9 +153,9 @@ export default function PracticePage() {
   return (
     <div className="max-w-3xl mx-auto space-y-8">
       <div className="text-center">
-        <h1 className="text-3xl font-bold font-headline">Practice Questions</h1>
+        <h1 className="text-3xl font-bold font-headline">{t('title')}</h1>
         <p className="text-muted-foreground mt-2">
-          Select your preferences and start practicing.
+          {t('description')}
         </p>
       </div>
 
@@ -186,30 +163,17 @@ export default function PracticePage() {
         <CardHeader>
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1">
-              <Label htmlFor="language">Language</Label>
-              <Select value={language} onValueChange={handleLanguageChange}>
-                <SelectTrigger id="language">
-                  <SelectValue placeholder="Select language" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="en">English</SelectItem>
-                  <SelectItem value="kn">ಕನ್ನಡ (Kannada)</SelectItem>
-                  <SelectItem value="ur">اردو (Urdu)</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="flex-1">
-              <Label htmlFor="topic">Topic</Label>
+              <Label htmlFor="topic">{t('topicLabel')}</Label>
               <Select value={topic} onValueChange={handleTopicChange}>
                 <SelectTrigger id="topic">
-                  <SelectValue placeholder="Select topic" />
+                  <SelectValue placeholder={t('selectTopicPlaceholder')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="cdp">{topics[language].cdp}</SelectItem>
-                  <SelectItem value="lang1">{topics[language].lang1}</SelectItem>
-                  <SelectItem value="lang2">{topics[language].lang2}</SelectItem>
-                  <SelectItem value="maths">{topics[language].maths}</SelectItem>
-                  <SelectItem value="evs">{topics[language].evs}</SelectItem>
+                  <SelectItem value="cdp">{topics.cdp}</SelectItem>
+                  <SelectItem value="lang1">{topics.lang1}</SelectItem>
+                  <SelectItem value="lang2">{topics.lang2}</SelectItem>
+                  <SelectItem value="maths">{topics.maths}</SelectItem>
+                  <SelectItem value="evs">{topics.evs}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -219,8 +183,8 @@ export default function PracticePage() {
 
       <Card>
         <CardHeader>
-          {currentQuestion && <CardTitle className="font-headline text-xl">Question</CardTitle>}
-          {currentQuestion && <CardDescription>{topics[language][topic]}</CardDescription>}
+          {currentQuestion && <CardTitle className="font-headline text-xl">{t('questionTitle')}</CardTitle>}
+          {currentQuestion && <CardDescription>{topics[topic]}</CardDescription>}
         </CardHeader>
         {currentQuestion ? (
         <>
@@ -239,7 +203,7 @@ export default function PracticePage() {
                 {feedback && (
                     <Alert variant={feedback.correct ? "default" : "destructive"} className="bg-opacity-20">
                         {feedback.correct ? <CheckCircle2 className="h-4 w-4" /> : <XCircle className="h-4 w-4" />}
-                        <AlertTitle>{feedback.correct ? "Correct!" : "Incorrect"}</AlertTitle>
+                        <AlertTitle>{feedback.correct ? t('feedback.correctTitle') : t('feedback.incorrectTitle')}</AlertTitle>
                         <AlertDescription>
                             {feedback.message}
                         </AlertDescription>
@@ -247,11 +211,11 @@ export default function PracticePage() {
                 )}
                 <div className="flex justify-end gap-4">
                     {feedback ? (
-                        <Button onClick={fetchNewQuestion}>Next Question</Button>
+                        <Button onClick={fetchNewQuestion}>{t('nextQuestion')}</Button>
                     ) : (
                         <>
-                            <Button variant="outline" onClick={fetchNewQuestion}>Skip</Button>
-                            <Button onClick={handleCheckAnswer} disabled={!selectedOption}>Check Answer</Button>
+                            <Button variant="outline" onClick={fetchNewQuestion}>{t('skip')}</Button>
+                            <Button onClick={handleCheckAnswer} disabled={!selectedOption}>{t('checkAnswer')}</Button>
                         </>
                     )}
                 </div>
@@ -259,7 +223,7 @@ export default function PracticePage() {
         </>
         ) : (
             <CardContent>
-                <p>No questions available for the selected language and topic.</p>
+                <p>{t('noQuestions')}</p>
             </CardContent>
         )}
       </Card>

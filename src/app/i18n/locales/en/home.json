@@ -1,0 +1,18 @@
+{
+    "welcome": "Welcome to KARTET Prep",
+    "description": "Your one-stop solution for acing the Karnataka Teacher Eligibility Test. Practice questions, mock tests, and personalized study plans, all in one place.",
+    "goToDashboard": "Go to Dashboard",
+    "viewSyllabus": "View Syllabus",
+    "practiceQuestions": {
+        "title": "Practice Questions",
+        "description": "Sharpen your skills with our extensive, multilingual question bank covering all subjects."
+    },
+    "mockTests": {
+        "title": "Mock Tests",
+        "description": "Simulate the real exam experience with full-length, timed mock tests for Paper I & II."
+    },
+    "syllabus": {
+        "title": "Syllabus",
+        "description": "Access the complete, structured KARTET syllabus to guide your preparation effectively."
+    }
+}

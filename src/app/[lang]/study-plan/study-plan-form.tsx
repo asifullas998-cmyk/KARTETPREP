@@ -29,6 +29,7 @@ import { generateStudyPlan, saveStudyPlan } from "./actions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Download, Loader2, Save } from "lucide-react";
 import { NotoNastaliqUrdu } from "@/lib/fonts";
+import { useTranslation } from "@/app/i18n/client";
 
 const formSchema = z.object({
   userHistory: z.string().min(10, "Please provide some details about your study history."),
@@ -50,7 +51,8 @@ const defaultHistory = `[
   {"topic": "Mathematics", "question": "Fractions", "correct": false}
 ]`;
 
-export function StudyPlanForm() {
+export function StudyPlanForm({ lang }: { lang: string }) {
+  const { t } = useTranslation(lang, 'study-plan');
   const [isLoading, setIsLoading] = useState(false);
   const [studyPlan, setStudyPlan] = useState<string | null>(null);
   const { toast } = useToast();
@@ -60,7 +62,7 @@ export function StudyPlanForm() {
     defaultValues: {
       userHistory: defaultHistory,
       syllabus: defaultSyllabus,
-      preferredLanguage: "en",
+      preferredLanguage: lang,
     },
   });
 
@@ -73,13 +75,13 @@ export function StudyPlanForm() {
     if (result.success) {
       setStudyPlan(result.success.studyPlan);
       toast({
-        title: "Success!",
-        description: "Your personalized study plan has been generated.",
+        title: t('toast.success.title'),
+        description: t('toast.success.description'),
       });
     } else {
       toast({
         variant: "destructive",
-        title: "Error",
+        title: t('toast.error.title'),
         description: result.failure,
       });
     }
@@ -89,9 +91,9 @@ export function StudyPlanForm() {
     if (!studyPlan) return;
     const result = await saveStudyPlan({ content: studyPlan });
     if (result.success) {
-      toast({ title: "Saved!", description: "Study plan saved to your library." });
+      toast({ title: t('toast.saved.title'), description: t('toast.saved.description') });
     } else {
-      toast({ variant: "destructive", title: "Error", description: result.failure });
+      toast({ variant: "destructive", title: t('toast.error.title'), description: result.failure });
     }
   };
 
@@ -124,16 +126,16 @@ export function StudyPlanForm() {
             name="userHistory"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Your Study History</FormLabel>
+                <FormLabel>{t('form.history.label')}</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Provide your question history in JSON format."
+                    placeholder={t('form.history.placeholder')}
                     className="h-32 font-code"
                     {...field}
                   />
                 </FormControl>
                 <FormDescription>
-                  Enter your past performance (correct/incorrect answers on topics).
+                  {t('form.history.description')}
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -145,15 +147,15 @@ export function StudyPlanForm() {
             name="syllabus"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Syllabus</FormLabel>
+                <FormLabel>{t('form.syllabus.label')}</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Enter the exam syllabus."
+                    placeholder={t('form.syllabus.placeholder')}
                     className="h-32 font-code"
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>The syllabus for the KARTET exam.</FormDescription>
+                <FormDescription>{t('form.syllabus.description')}</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -164,21 +166,21 @@ export function StudyPlanForm() {
             name="preferredLanguage"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Preferred Language</FormLabel>
+                <FormLabel>{t('form.language.label')}</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select your preferred language" />
+                      <SelectValue placeholder={t('form.language.placeholder')} />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="en">English</SelectItem>
-                    <SelectItem value="kn">ಕನ್ನಡ (Kannada)</SelectItem>
-                    <SelectItem value="ur">اردو (Urdu)</SelectItem>
+                    <SelectItem value="en">{t('languages.en')}</SelectItem>
+                    <SelectItem value="kn">{t('languages.kn')}</SelectItem>
+                    <SelectItem value="ur">{t('languages.ur')}</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormDescription>
-                  The language for your study plan.
+                  {t('form.language.description')}
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -187,7 +189,7 @@ export function StudyPlanForm() {
 
           <Button type="submit" disabled={isLoading}>
             {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Generate Plan
+            {t('form.generateButton')}
           </Button>
         </form>
       </Form>
@@ -195,15 +197,15 @@ export function StudyPlanForm() {
       {studyPlan && (
         <Card className="mt-8">
           <CardHeader>
-            <CardTitle className="font-headline">Your Personalized Study Plan</CardTitle>
+            <CardTitle className="font-headline">{t('result.title')}</CardTitle>
           </CardHeader>
           <CardContent>
             <pre className="whitespace-pre-wrap font-body text-sm bg-secondary p-4 rounded-md">
                 {studyPlan}
             </pre>
             <div className="mt-4 flex gap-2">
-                <Button onClick={handleSaveToLibrary}><Save className="mr-2 h-4 w-4" /> Save to Library</Button>
-                <Button onClick={handleDownloadPdf} variant="outline"><Download className="mr-2 h-4 w-4" /> Download PDF</Button>
+                <Button onClick={handleSaveToLibrary}><Save className="mr-2 h-4 w-4" /> {t('result.saveButton')}</Button>
+                <Button onClick={handleDownloadPdf} variant="outline"><Download className="mr-2 h-4 w-4" /> {t('result.downloadButton')}</Button>
             </div>
           </CardContent>
         </Card>

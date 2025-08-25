@@ -1,0 +1,47 @@
+{
+    "title": "AI Personalized Study Plan",
+    "description": "Let our AI analyze your performance and create a custom study plan to help you focus on your weak areas.",
+    "form": {
+        "title": "Generate Your Plan",
+        "description": "Provide some details about your study history and preferences to get started.",
+        "history": {
+            "label": "Your Study History",
+            "placeholder": "Provide your question history in JSON format.",
+            "description": "Enter your past performance (correct/incorrect answers on topics)."
+        },
+        "syllabus": {
+            "label": "Syllabus",
+            "placeholder": "Enter the exam syllabus.",
+            "description": "The syllabus for the KARTET exam."
+        },
+        "language": {
+            "label": "Preferred Language",
+            "placeholder": "Select your preferred language",
+            "description": "The language for your study plan."
+        },
+        "generateButton": "Generate Plan"
+    },
+    "result": {
+        "title": "Your Personalized Study Plan",
+        "saveButton": "Save to Library",
+        "downloadButton": "Download PDF"
+    },
+    "toast": {
+        "success": {
+            "title": "Success!",
+            "description": "Your personalized study plan has been generated."
+        },
+        "error": {
+            "title": "Error"
+        },
+        "saved": {
+            "title": "Saved!",
+            "description": "Study plan saved to your library."
+        }
+    },
+    "languages": {
+        "en": "English",
+        "kn": "ಕನ್ನಡ (Kannada)",
+        "ur": "اردو (Urdu)"
+    }
+}

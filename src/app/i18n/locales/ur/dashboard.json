@@ -1,0 +1,15 @@
+{
+    "notifications": {
+        "title": "اطلاعات",
+        "description": "سرکاری اپ ڈیٹس اور اعلانات۔",
+        "resultsAnnounced": "KARTET 2024 کے نتائج کا اعلان ہو گیا۔",
+        "newMockTest": "پیپر II کے لیے نیا فرضی ٹیسٹ دستیاب ہے۔",
+        "deadlineExtended": "KARTET 2025 کے لیے درخواست کی آخری تاریخ میں توسیع کر دی گئی ہے۔"
+    },
+    "time": {
+        "daysAgo_one": "{{count}} دن پہلے",
+        "daysAgo_other": "{{count}} دن پہلے",
+        "weekAgo_one": "{{count}} ہفتہ پہلے",
+        "weekAgo_other": "{{count}} ہفتے پہلے"
+    }
+}

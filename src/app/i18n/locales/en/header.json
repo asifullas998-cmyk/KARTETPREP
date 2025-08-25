@@ -1,0 +1,16 @@
+{
+    "home": "Home",
+    "switchLanguage": "Switch language",
+    "userMenu": "User menu",
+    "login": "Login",
+    "register": "Register",
+    "mockTest": "Mock Test",
+    "pageTitles": {
+        "dashboard": "Dashboard",
+        "syllabus": "Syllabus",
+        "practice": "Practice",
+        "mocktests": "Mock Tests",
+        "studyplan": "Study Plan",
+        "mylibrary": "My Library"
+    }
+}

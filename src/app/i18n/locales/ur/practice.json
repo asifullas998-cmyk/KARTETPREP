@@ -1,0 +1,31 @@
+{
+    "title": "مشقی سوالات",
+    "description": "اپنی ترجیحات منتخب کریں اور مشق شروع کریں۔",
+    "languageLabel": "زبان",
+    "selectLanguagePlaceholder": "زبان منتخب کریں",
+    "languages": {
+        "en": "English",
+        "kn": "ಕನ್ನಡ (Kannada)",
+        "ur": "اردو (Urdu)"
+    },
+    "topicLabel": "موضوع",
+    "selectTopicPlaceholder": "موضوع منتخب کریں",
+    "topics": {
+        "cdp": "بچوں کی نشوونما اور درس و تدریس",
+        "lang1": "زبان اول",
+        "lang2": "زبان دوم",
+        "maths": "ریاضی",
+        "evs": "ماحولیاتی مطالعہ"
+    },
+    "questionTitle": "سوال",
+    "noQuestions": "منتخب زبان اور موضوع کے لیے کوئی سوال دستیاب نہیں ہے۔",
+    "feedback": {
+        "correct": "درست!",
+        "correctTitle": "درست!",
+        "incorrect": "صحیح جواب ہے: {{correctAnswer}}",
+        "incorrectTitle": "غلط"
+    },
+    "nextQuestion": "اگلا سوال",
+    "skip": "چھوڑ دیں",
+    "checkAnswer": "جواب چیک کریں"
+}

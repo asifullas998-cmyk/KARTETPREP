@@ -1,0 +1,16 @@
+{
+    "home": "گھر",
+    "switchLanguage": "زبان تبدیل کریں",
+    "userMenu": "صارف مینو",
+    "login": "لاگ ان",
+    "register": "رجسٹر",
+    "mockTest": "فرضی ٹیسٹ",
+    "pageTitles": {
+        "dashboard": "ڈیش بورڈ",
+        "syllabus": "نصاب",
+        "practice": "مشق",
+        "mocktests": "فرضی ٹیسٹ",
+        "studyplan": "مطالعاتی منصوبہ",
+        "mylibrary": "میری لائبریری"
+    }
+}

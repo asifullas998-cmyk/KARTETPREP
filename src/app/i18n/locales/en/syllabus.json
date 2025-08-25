@@ -1,0 +1,50 @@
+{
+    "title": "KARTET Syllabus",
+    "description": "Official syllabus structure for Paper I and Paper II.",
+    "paper1": {
+        "accordionTitle": "Paper I (for classes I to V)",
+        "cdp": {
+            "title": "Child Development and Pedagogy",
+            "topics": ["Development of a Primary School Child", "Concept of Inclusive education", "Learning and Pedagogy"]
+        },
+        "lang1": {
+            "title": "Language I",
+            "topics": ["Language Comprehension", "Pedagogy of Language Development"]
+        },
+        "lang2": {
+            "title": "Language II",
+            "topics": ["Comprehension", "Pedagogy of Language Development"]
+        },
+        "maths": {
+            "title": "Mathematics",
+            "topics": ["Content (Number System, Shapes, etc.)", "Pedagogical issues"]
+        },
+        "evs": {
+            "title": "Environmental Studies",
+            "topics": ["Content (Family, Food, Water, etc.)", "Pedagogical Issues"]
+        }
+    },
+    "paper2": {
+        "accordionTitle": "Paper II (for classes VI to VIII)",
+        "cdp": {
+            "title": "Child Development and Pedagogy",
+            "topics": ["Development of an Elementary School Child", "Concept of Inclusive education", "Learning and Pedagogy"]
+        },
+        "lang1": {
+            "title": "Language I",
+            "topics": ["Language Comprehension", "Pedagogy of Language Development"]
+        },
+        "lang2": {
+            "title": "Language II",
+            "topics": ["Comprehension", "Pedagogy of Language Development"]
+        },
+        "maths_science": {
+            "title": "Mathematics and Science",
+            "topics": ["Mathematics (Number System, Algebra, Geometry)", "Science (Food, Materials, The World of the Living)"]
+        },
+        "social": {
+            "title": "Social Studies/Social Sciences",
+            "topics": ["History", "Geography", "Social and Political Life"]
+        }
+    }
+}

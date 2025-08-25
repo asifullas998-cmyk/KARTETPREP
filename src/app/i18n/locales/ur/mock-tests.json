@@ -1,0 +1,23 @@
+{
+    "title": "فرضی ٹیسٹ",
+    "description": "امتحانی ماحول کی تقلید کریں اور اپنی تیاری کی جانچ کریں۔",
+    "paper1": {
+        "title": "پیپر I فرضی ٹیسٹ",
+        "description": "کلاس I سے V کے لیے۔ بچوں کی نشوونما، زبان I اور II، ریاضی، اور ماحولیاتی علوم پر محیط ہے۔"
+    },
+    "paper2": {
+        "title": "پیپر II فرضی ٹیسٹ",
+        "description": "کلاس VI سے VIII کے لیے۔ بچوں کی نشوونما، زبان I اور II، اور آپ کی پسند کے ریاضی اور سائنس یا سماجی علوم پر محیط ہے۔"
+    },
+    "questions_one": "{{count}} سوال",
+    "questions_other": "{{count}} سوالات",
+    "minutes_one": "{{count}} منٹ",
+    "minutes_other": "{{count}} منٹ",
+    "selectLanguage": "زبان منتخب کریں",
+    "languages": {
+        "en": "English",
+        "kn": "ಕನ್ನಡ (Kannada)",
+        "ur": "اردو (Urdu)"
+    },
+    "startTest": "ٹیسٹ شروع کریں"
+}

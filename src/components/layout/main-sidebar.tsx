@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -24,17 +23,17 @@ import {
   Library,
 } from "lucide-react";
 
-const menuItems = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/syllabus", label: "Syllabus", icon: BookOpen },
-  { href: "/practice", label: "Practice", icon: Pencil },
-  { href: "/mock-tests", label: "Mock Tests", icon: FileText },
-  { href: "/study-plan", label: "Study Plan", icon: Bot },
-  { href: "/my-library", label: "My Library", icon: Library },
-];
-
 export function MainSidebar() {
   const pathname = usePathname();
+
+  const menuItems = [
+    { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+    { href: "/syllabus", label: "Syllabus", icon: BookOpen },
+    { href: "/practice", label: "Practice", icon: Pencil },
+    { href: "/mock-tests", label: "Mock Tests", icon: FileText },
+    { href: "/study-plan", label: "Study Plan", icon: Bot },
+    { href: "/my-library", label: "My Library", icon: Library },
+  ];
 
   return (
     <>
@@ -51,13 +50,9 @@ export function MainSidebar() {
       <SidebarMenu>
         {menuItems.map((item) => (
           <SidebarMenuItem key={item.href}>
-            <Link href={item.href} passHref legacyBehavior>
+             <Link href={item.href}>
               <SidebarMenuButton
-                as="a"
-                isActive={
-                  pathname === item.href ||
-                  (item.href !== "/dashboard" && pathname.startsWith(item.href))
-                }
+                isActive={pathname.startsWith(item.href)}
                 tooltip={item.label}
               >
                   <item.icon />
@@ -78,4 +73,3 @@ export function MainSidebar() {
     </>
   );
 }
-

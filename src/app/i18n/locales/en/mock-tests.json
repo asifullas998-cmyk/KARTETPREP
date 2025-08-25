@@ -1,0 +1,23 @@
+{
+    "title": "Mock Tests",
+    "description": "Simulate the exam environment and test your preparation.",
+    "paper1": {
+        "title": "Paper I Mock Test",
+        "description": "For classes I to V. Covers Child Development, Language I & II, Mathematics, and Environmental Studies."
+    },
+    "paper2": {
+        "title": "Paper II Mock Test",
+        "description": "For classes VI to VIII. Covers Child Development, Language I & II, and your choice of Mathematics & Science or Social Studies."
+    },
+    "questions_one": "{{count}} Question",
+    "questions_other": "{{count}} Questions",
+    "minutes_one": "{{count}} Minute",
+    "minutes_other": "{{count}} Minutes",
+    "selectLanguage": "Select language",
+    "languages": {
+        "en": "English",
+        "kn": "ಕನ್ನಡ (Kannada)",
+        "ur": "اردو (Urdu)"
+    },
+    "startTest": "Start Test"
+}

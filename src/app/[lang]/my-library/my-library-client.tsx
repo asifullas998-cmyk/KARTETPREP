@@ -21,17 +21,20 @@ import type { ListStudyPlansOutput } from "@/ai/schemas";
 import { Download, Loader2, Globe } from "lucide-react";
 import { translateStudyPlan } from "./actions";
 import { NotoNastaliqUrdu } from "@/lib/fonts";
-import { jsPDF } from "jspdf";
+import { useTranslation } from "@/app/i18n/client";
 
 interface MyLibraryClientProps {
   initialStudyPlans: ListStudyPlansOutput;
+  lang: string;
 }
 
-export function MyLibraryClient({ initialStudyPlans }: MyLibraryClientProps) {
+export function MyLibraryClient({ initialStudyPlans, lang }: MyLibraryClientProps) {
+  const { t } = useTranslation(lang, 'my-library');
   const [studyPlans, setStudyPlans] = useState(initialStudyPlans);
   const [translatingId, setTranslatingId] = useState<string | null>(null);
 
   const handleDownloadPdf = async (content: string) => {
+    const { jsPDF } = await import("jspdf");
     const doc = new jsPDF();
     
     const isUrdu = /[\u0600-\u06FF]/.test(content);
@@ -80,8 +83,8 @@ export function MyLibraryClient({ initialStudyPlans }: MyLibraryClientProps) {
     return (
         <Card className="text-center">
             <CardHeader>
-                <CardTitle>Your Library is Empty</CardTitle>
-                <CardDescription>You haven't saved any study plans yet. Generate one from the Study Plan page!</CardDescription>
+                <CardTitle>{t('empty.title')}</CardTitle>
+                <CardDescription>{t('empty.description')}</CardDescription>
             </CardHeader>
         </Card>
     );
@@ -92,9 +95,9 @@ export function MyLibraryClient({ initialStudyPlans }: MyLibraryClientProps) {
       {studyPlans.map((plan) => (
         <Card key={plan.id}>
           <CardHeader>
-            <CardTitle className="font-headline text-xl">Study Plan</CardTitle>
+            <CardTitle className="font-headline text-xl">{t('plan.title')}</CardTitle>
             <CardDescription>
-              Created on: {new Date(plan.createdAt).toLocaleDateString()}
+              {t('plan.createdOn', { date: new Date(plan.createdAt).toLocaleDateString() })}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -107,18 +110,18 @@ export function MyLibraryClient({ initialStudyPlans }: MyLibraryClientProps) {
               variant="outline"
               onClick={() => handleDownloadPdf(plan.content)}
             >
-              <Download className="mr-2 h-4 w-4" /> Download PDF
+              <Download className="mr-2 h-4 w-4" /> {t('plan.downloadPdf')}
             </Button>
             <div className="flex items-center gap-2">
                 <Globe className="w-5 h-5 text-muted-foreground" />
                 <Select onValueChange={(lang) => handleTranslate(plan.id, lang)}>
                   <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Translate..." />
+                    <SelectValue placeholder={t('plan.translatePlaceholder')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="en">English</SelectItem>
-                    <SelectItem value="kn">ಕನ್ನಡ (Kannada)</SelectItem>
-                    <SelectItem value="ur">اردو (Urdu)</SelectItem>
+                    <SelectItem value="en">{t('languages.en')}</SelectItem>
+                    <SelectItem value="kn">{t('languages.kn')}</SelectItem>
+                    <SelectItem value="ur">{t('languages.ur')}</SelectItem>
                   </SelectContent>
                 </Select>
                  {translatingId === plan.id && <Loader2 className="h-5 w-5 animate-spin" />}

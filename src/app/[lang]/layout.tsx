@@ -1,10 +1,16 @@
 import type { Metadata } from 'next';
-import './globals.css';
+import '../globals.css';
 import { cn } from '@/lib/utils';
 import { SidebarProvider, Sidebar, SidebarInset } from '@/components/ui/sidebar';
 import { MainSidebar } from '@/components/layout/main-sidebar';
 import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
+import { dir } from 'i18next';
+import { languages } from '../i18n/settings';
+
+export async function generateStaticParams() {
+  return languages.map((lang) => ({ lang }));
+}
 
 export const metadata: Metadata = {
   title: 'KARTET Prep',
@@ -13,39 +19,29 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params: { lang },
 }: Readonly<{
   children: React.ReactNode;
+  params: { lang: string };
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body
+    <div lang={lang} dir={dir(lang)}>
+      <div
         className={cn(
           'min-h-screen bg-background font-body antialiased'
         )}
       >
         <SidebarProvider>
           <Sidebar>
-            <MainSidebar />
+            <MainSidebar lang={lang} />
           </Sidebar>
           <SidebarInset className="flex flex-col">
-            <Header />
+            <Header lang={lang} />
             <main className="flex-1 p-4 md:p-8 pt-6">{children}</main>
           </SidebarInset>
         </SidebarProvider>
         <Toaster />
-      </body>
-    </html>
+      </div>
+    </div>
   );
 }

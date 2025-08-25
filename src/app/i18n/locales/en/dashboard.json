@@ -1,0 +1,15 @@
+{
+    "notifications": {
+        "title": "Notifications",
+        "description": "Official updates and announcements.",
+        "resultsAnnounced": "KARTET 2024 results announced.",
+        "newMockTest": "New mock test for Paper II is available.",
+        "deadlineExtended": "Application deadline for KARTET 2025 extended."
+    },
+    "time": {
+        "daysAgo_one": "{{count}} day ago",
+        "daysAgo_other": "{{count}} days ago",
+        "weekAgo_one": "{{count}} week ago",
+        "weekAgo_other": "{{count}} weeks ago"
+    }
+}
