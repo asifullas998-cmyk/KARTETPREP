@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -21,6 +22,7 @@ import {
   Bot,
   LogOut,
   Library,
+  FileClock,
 } from "lucide-react";
 
 export function MainSidebar() {
@@ -31,6 +33,7 @@ export function MainSidebar() {
     { href: "/syllabus", label: "Syllabus", icon: BookOpen },
     { href: "/practice", label: "Practice", icon: Pencil },
     { href: "/mock-tests", label: "Mock Tests", icon: FileText },
+    { href: "/previous-papers", label: "Previous Papers", icon: FileClock },
     { href: "/study-plan", label: "Study Plan", icon: Bot },
     { href: "/my-library", label: "My Library", icon: Library },
   ];
@@ -50,14 +53,15 @@ export function MainSidebar() {
       <SidebarMenu>
         {menuItems.map((item) => (
           <SidebarMenuItem key={item.href}>
-             <Link href={item.href}>
-              <SidebarMenuButton
-                isActive={pathname.startsWith(item.href)}
-                tooltip={item.label}
-              >
-                  <item.icon />
-                  <span>{item.label}</span>
-              </SidebarMenuButton>
+            <Link href={item.href} passHref legacyBehavior>
+                <SidebarMenuButton
+                    as="a"
+                    isActive={pathname.startsWith(item.href)}
+                    tooltip={item.label}
+                >
+                    <item.icon />
+                    <span>{item.label}</span>
+                </SidebarMenuButton>
             </Link>
           </SidebarMenuItem>
         ))}

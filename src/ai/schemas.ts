@@ -50,3 +50,21 @@ export const TranslateOutputSchema = z.object({
   translatedPlan: z.string().describe('The translated study plan.'),
 });
 export type TranslateOutput = z.infer<typeof TranslateOutputSchema>;
+
+// Schemas for generate-question-paper-flow.ts
+export const GenerateQuestionPaperInputSchema = z.object({
+    subject: z.string().describe('The subject for the question paper (e.g., Child Development and Pedagogy, Mathematics).'),
+    language: z.string().describe('The language for the questions (en, kn, ur).'),
+});
+export type GenerateQuestionPaperInput = z.infer<typeof GenerateQuestionPaperInputSchema>;
+
+const QuestionSchema = z.object({
+    questionText: z.string().describe("The text of the question."),
+    options: z.array(z.string()).length(4).describe("A list of 4 multiple choice options."),
+    correctAnswer: z.string().describe("The correct answer from the options."),
+});
+
+export const GenerateQuestionPaperOutputSchema = z.object({
+    questions: z.array(QuestionSchema).describe('A list of generated questions.'),
+});
+export type GenerateQuestionPaperOutput = z.infer<typeof GenerateQuestionPaperOutputSchema>;
