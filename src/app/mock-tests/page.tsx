@@ -59,9 +59,9 @@ export default function MockTestsPage() {
                   <span>{test.duration} Minutes</span>
               </div>
             </CardContent>
-            <CardFooter className="flex flex-col gap-4">
+            <CardFooter className="flex flex-col sm:flex-row items-center gap-4">
                 <Select onValueChange={(lang) => handleLanguageChange(test.id, lang)} defaultValue="en">
-                    <SelectTrigger className="w-full">
+                    <SelectTrigger className="w-full sm:w-auto flex-grow">
                         <SelectValue placeholder="Select language" />
                     </SelectTrigger>
                     <SelectContent>
@@ -70,7 +70,7 @@ export default function MockTestsPage() {
                         <SelectItem value="ur">اردو (Urdu)</SelectItem>
                     </SelectContent>
                 </Select>
-              <Button asChild className="w-full">
+              <Button asChild className="w-full sm:w-auto">
                 <Link href={`/mock-tests/${test.id}?lang=${languages[test.id] || 'en'}`}>
                   Start Test <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

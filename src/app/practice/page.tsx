@@ -96,12 +96,28 @@ const allQuestions: AllQuestions = {
 };
 
 
-const topics: Record<string, string> = {
-    "cdp": "Child Development and Pedagogy",
-    "lang1": "Language I",
-    "lang2": "Language II",
-    "maths": "Mathematics",
-    "evs": "Environmental Studies",
+const topics: Record<string, any> = {
+    en: {
+        "cdp": "Child Development and Pedagogy",
+        "lang1": "Language I",
+        "lang2": "Language II",
+        "maths": "Mathematics",
+        "evs": "Environmental Studies",
+    },
+    kn: {
+        "cdp": "ಮಕ್ಕಳ ಅಭಿವೃದ್ಧಿ ಮತ್ತು ಶಿಕ್ಷಣಶಾಸ್ತ್ರ",
+        "lang1": "ಭಾಷೆ I",
+        "lang2": "ಭಾಷೆ II",
+        "maths": "ಗಣಿತ",
+        "evs": "ಪರಿಸರ ಅಧ್ಯಯನ",
+    },
+    ur: {
+        "cdp": "بچوں کی ترقی اور درس و تدریس",
+        "lang1": "زبان اول",
+        "lang2": "زبان دوم",
+        "maths": "ریاضی",
+        "evs": "ماحولیاتی مطالعہ",
+    }
 };
 
 export default function PracticePage() {
@@ -135,12 +151,12 @@ export default function PracticePage() {
     const handleCheckAnswer = () => {
         if (!selectedOption || !currentQuestion) return;
         const isCorrect = selectedOption === currentQuestion.correctAnswer;
-        const correctMessage = {
+        const correctMessage: Record<string, string> = {
           en: "Correct!",
           kn: "ಸರಿಯಾಗಿದೆ!",
           ur: "صحیح!",
         };
-        const incorrectMessage = {
+        const incorrectMessage: Record<string, string> = {
             en: `The correct answer is: ${currentQuestion.correctAnswer}`,
             kn: `ಸರಿಯಾದ ಉತ್ತರ: ${currentQuestion.correctAnswer}`,
             ur: `صحیح جواب ہے: ${currentQuestion.correctAnswer}`,
@@ -191,11 +207,11 @@ export default function PracticePage() {
                   <SelectValue placeholder="Select topic" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="cdp">Child Development and Pedagogy</SelectItem>
-                  <SelectItem value="lang1">Language I</SelectItem>
-                  <SelectItem value="lang2">Language II</SelectItem>
-                  <SelectItem value="maths">Mathematics</SelectItem>
-                  <SelectItem value="evs">Environmental Studies</SelectItem>
+                  <SelectItem value="cdp">{topics[language].cdp}</SelectItem>
+                  <SelectItem value="lang1">{topics[language].lang1}</SelectItem>
+                  <SelectItem value="lang2">{topics[language].lang2}</SelectItem>
+                  <SelectItem value="maths">{topics[language].maths}</SelectItem>
+                  <SelectItem value="evs">{topics[language].evs}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -206,7 +222,7 @@ export default function PracticePage() {
       <Card>
         <CardHeader>
           {currentQuestion && <CardTitle className="font-headline text-xl">Question</CardTitle>}
-          {currentQuestion && <CardDescription>{topics[topic]}</CardDescription>}
+          {currentQuestion && <CardDescription>{topics[language][topic]}</CardDescription>}
         </CardHeader>
         {currentQuestion ? (
         <>
@@ -252,5 +268,3 @@ export default function PracticePage() {
     </div>
   );
 }
-
-    
